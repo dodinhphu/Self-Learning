@@ -15,6 +15,7 @@
                     </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                         <ul id="nav" class="navbar-nav ms-auto">
+                            {{#if kt}}
                             <li class="nav-item">
                                 <a class="active" href="/">
                                     Home
@@ -32,12 +33,14 @@
                             </li>
                             <li class="nav-item"><a href="">Blog</a></li>
                             <li class="nav-item"><a href="">Contact</a></li>
+                            {{else}}
                             <li class="nav-item">
                                 <a href="/authentication/login">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a href="/authentication/register">Register</a>
                             </li>
+                            {{/if}}
                         </ul>
                     </div> <!-- navbar collapse -->
                     <!-- login -->

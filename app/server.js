@@ -4,13 +4,16 @@ require('dotenv').config();
 const app = express();
 const { engine } = require('express-handlebars');
 const hbs_sections = require('express-handlebars-sections');
+const cookieParser = require('cookie-parser')
 const db = require('./config/db/db');
+const cors = require('cors');
 
 db.connectDB();
+app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'src/public')));
-
+app.use(cookieParser())
 /* template  */
 app.engine('hbs', engine({
     extname: '.hbs',
@@ -22,7 +25,7 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src/views'));
 
-const route = require('./routes/index_route');class homeController {
+const route = require('./routes/index_route'); class homeController {
     // http://facebookfinder/home
     show(req, res, next) {
         return res.render('home');

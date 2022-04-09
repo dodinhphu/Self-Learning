@@ -5,7 +5,7 @@
 {{#section 'title'}}Login{{/section}}
 
 {{#section 'javascript'}}
-<script src=""></script>
+<script src="/js/login/login.js"></script>
 {{/section}}
 
 <div class="all_login container-fluid">
@@ -25,29 +25,31 @@
                             <h4 class="display-4">Self Learning</h4>
                             <br>
                             <div>
-                                {{#if message_dk}}
-                                <div class="alert alert-success" role="alert">
-                                    {{message_dk}}
+                                <div id="tb_tb_lg" class="alert alert-danger" role="alert">
+                                    {{message}}
                                 </div>
-                                {{/if}}
-                                <div class="form-group mb-3">
-                                    <input id="username" type="text" placeholder="Email" required="" autofocus=""
-                                        class="form-control rounded-pill border-0 shadow-sm px-4">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input id="password" type="password" placeholder="Password" required=""
-                                        class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input id="customCheck1" type="checkbox" class="custom-control-input">
-                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                <div>
+                                    <div class="form-group mb-3">
+                                        <input name="email" id="txt_email" type="text" placeholder="Email" required=""
+                                            autofocus="" class="ip-login form-control rounded-pill border-0 shadow-sm px-4">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input name="password" id="txt_password" type="password" placeholder="Password"
+                                            required=""
+                                            class="ip-login form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input id="customCheck1" type="checkbox" class="custom-control-input">
+                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                    </div>
+                                    <div style="display:flex;justify-content:end;" class="form-group btn_lg">
+                                        <button onclick="login()" type="submit"
+                                            class="btn_lglg btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
+                                            Signin
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="kd">
-                                    <div class="form-group btn_lg">
-                                        <button onclick="login()" type="submit"
-                                            class="btn_lglg btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
-                                            in</button>
-                                    </div>
                                     <div class="tong_lk">
                                         <div class="text-center d-flex justify-content-between">
                                             <p>Forgot Password
