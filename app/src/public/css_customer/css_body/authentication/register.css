@@ -1,0 +1,40 @@
+.register,
+.image {
+    min-height: 70vh;
+}
+
+.bg-image {
+    background-image: url('/images/slide/slider-bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.form_item {
+    margin-bottom: 20px;
+}
+
+.register {
+    padding: 20px 30px;
+
+}
+
+.btn-register {
+    margin: 10px;
+    position: absolute;
+    right: 82px;
+}
+
+.tb_register {
+    float: right;
+    color: red;
+}
+
+#tdtb {
+    color: red;
+    text-align: center;
+    margin: 10px;
+    font-weight: 500;
+}
+.all-register{
+    margin: 20px 0;
+}

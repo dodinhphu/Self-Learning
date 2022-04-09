@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- link forn --}}
+    {{!-- link icon --}}
+    <link rel="stylesheet" href="/icon/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css">
+    {{!-- link boostrap --}}
+    <link rel="stylesheet" href="/bootstrap_jquery/bootstrap-5.1.3/bootstrap-5.1.3/css/bootstrap.min.css">
+    {{!-- link layout css --}}
+    <link rel="stylesheet" href="/css_customer/css_layout/tiny-slider.css">
+    <link rel="stylesheet" href="/css_customer/css_layout/main.css">
+    {{!-- link customer css --}}
+    {{{_sections.css}}}
+    <link rel='shortcut icon' href='/images/favicon.ico' />
+    <title>{{{_sections.title}}}</title>
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            {{>header}}
+        </header>
+        {{{body}}}
+        <footer>
+            {{>footer}}
+        </footer>
+    </div>
+    <script src="/bootstrap_jquery/jquery/jquery-3.6.0.min.js"></script>
+    {{!-- link js bootstrap --}}
+    <script src="/bootstrap_jquery/bootstrap-5.1.3/bootstrap-5.1.3/js/bootstrap.min.js"></script>
+    <script src="/bootstrap_jquery/bootstrap-5.1.3/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/icon/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/js/all.min.js"></script>
+    <script src="/js/home.js"></script>
+    {{!-- link js customer --}}
+    {{{_sections.javascript}}}
+</body>
+
+</html>
