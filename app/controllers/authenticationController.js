@@ -1,5 +1,6 @@
 const User = require("../model/user");
 const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
 const { create } = require("../model/user");
 class authenticationController {
     // get login
@@ -34,6 +35,51 @@ class authenticationController {
             return res.json({
                 status: false,
                 message: error.message
+            })
+        }
+    }
+    // post login
+    async login(req, res, next) {
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            if (!user) {
+                return res.json({
+                    status: false,
+                    message: "Account does not exist"
+                })
+            }
+            else {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    //đăng nhập thành công
+                    //tạo token key
+                    const token = jwt.sign(user.email, process.env.APP_SECRET);
+                    // trả về trang home
+                    if (req.query.prevlink) {
+                        return res.json({
+                            token_key: token,
+                            status: true,
+                            prevlink: process.env.LINK_WEB + req.query.prevlink
+                        })
+                    }
+                    else {
+                        return res.json({
+                            token_key: token,
+                            status: true
+                        })
+                    }
+                }
+                else {
+                    //đăng nhập thất bại
+                    return res.json({
+                        status: false,
+                        message: "Incorrect password"
+                    })
+                }
+            }
+        } catch (err) {
+            return res.json({
+                status: false,
+                message: "Login unsuccessful"
             })
         }
     }
