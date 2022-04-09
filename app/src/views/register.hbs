@@ -5,7 +5,7 @@
 {{#section 'title'}}Register{{/section}}
 
 {{#section 'javascript'}}
-<script src=""></script>
+<script src="/js/register/register.js"></script>
 {{/section}}
 
 <div class="all-register container-fluid">
@@ -16,52 +16,63 @@
 
                 <!-- Demo content-->
                 <div class="container">
-                    <div class="row">
+                    <div id="toan_rgt" class="row">
 
                         <h4 style=" text-align:center" class="display-6">Self Learning</h4>
                         <br>
-                        <form>
-                             <div class="form_item">
+                        <div id="tb_dk" style="margin-top: 8px;" class="" role="alert">
+                        </div>
+
+                        <form action="/authentication/register" method="POST" id="register_form">
+                            <div class="form_item">
                                 <label for="validationDefault01">Email</label>
-                                <input onfocus="an()" type="email" class="form-control" Name="email" id="txt_email"
-                                    placeholder="Email" required>
-                               
-                                <label class="tb_register"></label>
-                              
+                                <input id="txt_email" type="email" class="form-control inpux_dk" Name="email"
+                                    placeholder="Email">
                             </div>
                             <div class="form_item">
                                 <label for="validationDefault01">Full Name</label>
-                                <input onfocus="an()" type="text" class="form-control" name="fullname" id="txt_name"
-                                    placeholder="Full Name" required>
+                                <input id="txt_fullname" type="text" class="form-control inpux_dk" name="fullname"
+                                    placeholder="Full Name">
                             </div>
-                             <div class="form_item">
+                            <div class="form_item">
                                 <label for="validationDefault01">Address</label>
-                                <input onfocus="an()" type="text" class="form-control" name="fullname" id="txt_name"
-                                    placeholder="Address" required>
+                                <input id="txt_address" type="text" class="form-control inpux_dk" name="address"
+                                    placeholder="Address">
                             </div>
-                             <div class="form_item">
+                            <div class="form_item">
                                 <label for="validationDefault01">Number Phone</label>
-                                <input onfocus="an()" type="text" class="form-control" name="fullname" id="txt_name"
-                                    placeholder="Number Phone" required>
+                                <input id="txt_numberphone" type="text" class="form-control inpux_dk" name="numberPhone"
+                                    placeholder="Number Phone">
+                            </div>
+                            <div class="form_item">
+                                <label for="validationDefault01">Type</label>
+                                <select id="txt_type" name="type" class="form-select inpux_dk"
+                                    aria-label="Default select example">
+                                    <option value="1">Author</option>
+                                    <option value="2">Student</option>
+                                </select>
                             </div>
                             <div class="form_item">
                                 <label for="validationDefault01">Password</label>
-                                <input onfocus="an()" type="Password" class="form-control" name='password'
-                                    id="txt_password" placeholder="Password" required>
+                                <input type="Password" class="form-control inpux_dk" name='password' id="txt_password"
+                                    placeholder="Password">
 
                                 <label class="tb_register"></label>
 
                             </div>
                             <div class="form_item">
-                                <label for="validationDefault01">Comfirm Password</label>
-                                <input onfocus="an()" type="Password" class="form-control" name='password'
-                                    id="txt_password" placeholder="Comfirm Password" required>
+                                <label for="validationDefault01">Confirm Password</label>
+                                <input type="Password" class="form-control inpux_dk" name='confirmpassword'
+                                    placeholder="Confirm Password">
 
                                 <label class="tb_register"></label>
 
                             </div>
-                            <button type="submit" class="btn btn-success btn-register">Register</button>
+                            <button id="btn_register" type="submit"
+                                class="btn btn-success btn-register">Register</button>
                         </form>
+
+                       
                     </div>
                 </div>
             </div>
