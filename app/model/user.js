@@ -9,7 +9,8 @@ var validateEmail = function (email) {
 
 const user = new Schema({
     email: {
-        type: String, unique: [true, 'Email Already Exists '],
+        type: String, 
+        unique: [true, 'Email Already Exists '],
         validate: [validateEmail, 'Please fill in a valid email address'],
         trim: true,
         required: [true, 'You have not entered your email']
@@ -29,8 +30,9 @@ const user = new Schema({
             },
             message: props => `${props.value} is not a valid phone number`
         },
-        minLength: [6, 'Password Must Be Over 6 Characters'],
-        required: [true, 'You have not entered your password']
+        minLength: [10, 'Number phone Must Be Over 10 Characters'],
+        maxlength: [11, 'Phone number must be less than 11 characters'],
+        required: [true, 'You have not entered your Number Phone']
     },
     fullname: {
         type: String,

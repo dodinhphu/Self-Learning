@@ -5,4 +5,6 @@ const authenticationController = require('../controllers/authenticationControlle
 routes.get('/login',authenticationController.show_login);
 routes.get('/register',authenticationController.show_register);
 
+routes.post('/register',authenticationController.register);
+
 module.exports = routes;

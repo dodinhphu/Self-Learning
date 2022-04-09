@@ -20,8 +20,7 @@
 
 .btn-register {
     margin: 10px;
-    position: absolute;
-    right: 82px;
+    float: right;
 }
 
 .tb_register {
@@ -37,4 +36,12 @@
 }
 .all-register{
     margin: 20px 0;
+}
+.error{
+    color: red;
+    display: flex;
+    justify-content: end;
+}
+#tb_dk{
+    display: none;
 }

@@ -1,11 +1,11 @@
 {{#section 'css'}}
-    <link rel="stylesheet" href="/css_customer/css_body/authentication/login.css">
+<link rel="stylesheet" href="/css_customer/css_body/authentication/login.css">
 {{/section}}
 
 {{#section 'title'}}Login{{/section}}
 
 {{#section 'javascript'}}
-    <script src=""></script>
+<script src=""></script>
 {{/section}}
 
 <div class="all_login container-fluid">
@@ -25,9 +25,11 @@
                             <h4 class="display-4">Self Learning</h4>
                             <br>
                             <div>
-                                <div id="tb" class="alert alert-danger " role="alert">
-
+                                {{#if message_dk}}
+                                <div class="alert alert-success" role="alert">
+                                    {{message_dk}}
                                 </div>
+                                {{/if}}
                                 <div class="form-group mb-3">
                                     <input id="username" type="text" placeholder="Email" required="" autofocus=""
                                         class="form-control rounded-pill border-0 shadow-sm px-4">
@@ -97,7 +99,8 @@
                                             </p>
                                         </div>
                                         <div class="text-center d-flex justify-content-between">
-                                            <p>New User <a href="/authentication/register" class="font-italic text-muted">
+                                            <p>New User <a href="/authentication/register"
+                                                    class="font-italic text-muted">
                                                     <span class="badge bg-secondary">Register Here</span></a></p>
                                         </div>
                                     </div>
