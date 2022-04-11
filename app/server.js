@@ -20,6 +20,10 @@ app.engine('hbs', engine({
     defaultLayout: "main",
     helpers: {
         section: hbs_sections(),
+        check_quyen: (quyen, so) => {
+            if (quyen == so) return true;
+            else return false
+        }
     }
 }));
 app.set('view engine', 'hbs');

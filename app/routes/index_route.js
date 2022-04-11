@@ -1,10 +1,12 @@
 const homeRoute = require('./homeRoute');
 const authenticationRoute = require('./authenticationRoute');
 const teacherRoute = require("./teacherRouter")
+const verifyToken = require("../middleware/verifyToken");
+
 const get_user = require('../middleware/get_dataUser')
 function route(app) {
     app.use(get_user);
-    app.use('/teacher', teacherRoute);
+    app.use('/teacher', verifyToken, teacherRoute);
     app.use('/authentication', authenticationRoute);
     app.use('/home', homeRoute);
     app.use('/', homeRoute);

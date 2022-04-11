@@ -1,7 +1,9 @@
 const User = require("../model/user");
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+const mailer = require("../util/sendMail")
 const { create } = require("../model/user");
+const { redirect } = require("express/lib/response");
 class authenticationController {
     // get login
     show_login(req, res, next) {
@@ -11,6 +13,55 @@ class authenticationController {
     show_register(req, res, next) {
         return res.render('register');
     }
+    // get forgot Password
+    show_forgotPassword(req, res, next) {
+        jwt.verify(req.query.token, process.env.APP_SECRET, (err, token) => {
+            if (err) {
+                return res.render('forgotPassword', {
+                    kt_hang: false
+                })
+            }
+            else {
+                return res.render('forgotPassword', {
+                    kt_hang: true
+                })
+            }
+        })
+    }
+    // get show_update
+    async show_update(req, res, next) {
+        jwt.verify(req.cookies.token, process.env.APP_SECRET, async (err, token) => {
+            if (err) {
+                return res.redirect("/authentication/login")
+            }
+            else {
+                let data = await User.findOne({
+                    email: token
+                })
+                if (data) {
+                    data = data.toObject();
+                    return res.render('updateInformation', { data });
+                }
+                else {
+                    return res.redirect("/authentication/login")
+                }
+
+            }
+        })
+
+    }
+    // get change password
+    show_changePassword(req, res, next) {
+        return res.render('updatePassword')
+    }
+    logout(req, res, next) {
+        res.clearCookie('token');
+        return  res.redirect('/authentication/login')
+    }
+
+
+
+
 
     // post register
     async register(req, res, next) {
@@ -41,6 +92,7 @@ class authenticationController {
     // post login
     async login(req, res, next) {
         try {
+
             const user = await User.findOne({ email: req.body.email });
             if (!user) {
                 return res.json({
@@ -83,6 +135,146 @@ class authenticationController {
             })
         }
     }
+    // post reset password
+    async resetPassword(req, res, next) {
+        try {
+            const user = await User.findOne({
+                email: req.body.email
+            })
+            if (user) {
+                // tìm thấy người  dùng
+                //tạo một token key
+                const token = jwt.sign({ email: user.email }, process.env.APP_SECRET, { expiresIn: '180s' });
+                // gửi token key cho người dùng
+                let tieudemail = 'Forgot password';
+                let noidungmail = `
+                <h3> Click This Link To Change Password.</h3>
+                <a href='${process.env.LINK_WEB}/authentication/forgotpassword?token=${token}'>Change Password</a>
+                `;
+                mailer.sendMail(user.email.toString(), tieudemail, noidungmail)
+                    .then(function (mail) {
+                        res.status(200).json(mail)
+                    })
+                    .catch(function (err) {
+                        console.log('aaaa', err);
+                        res.status(500).json({
+                            message: "Email sending failed"
+                        })
+                    })
 
+            }
+            else {
+                res.status(500).json({
+                    message: "User not found"
+                })
+            }
+        } catch (err) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    }
+
+    // post change forgotpassword
+    async changePassword(req, res, next) {
+        try {
+            let token = req.body.token.replace('?token=', '');
+            jwt.verify(token, process.env.APP_SECRET, (err, token) => {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Token has expired'
+                    })
+                }
+                else {
+                    User.findOne({
+                        email: token.email,
+                    })
+                        .then(function (user) {
+                            user.password = req.body.password;
+                            user.save()
+                                .then(function (data) {
+                                    return res.status(200).json(data);
+                                })
+                                .catch(function (err) {
+                                    return res.status(500).json(err);
+                                })
+                        })
+                        .catch(function (err) {
+                            return res.status(500).json({
+                                message: 'Account Not Found'
+                            });
+                        })
+                }
+            })
+        } catch (err) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+
+    }
+
+    // post updateInformation
+    async updateInformation(req, res, next) {
+        jwt.verify(req.cookies.token, process.env.APP_SECRET, async (err, token) => {
+            if (err) {
+                res.status(500).json({
+                    message: err.message
+                })
+            }
+            else {
+                let user = await User.findOne({
+                    email: token
+                })
+                if (user) {
+                    user.fullname = req.body.fullname;
+                    user.address = req.body.address;
+                    user.numberPhone = req.body.numberPhone
+                    user.save()
+                        .then(function (data) {
+                            res.status(200).json(data);
+                        })
+                        .catch(function (err) {
+                            res.status(500).json({
+                                message: err.message
+                            })
+                        })
+                }
+            }
+        })
+    }
+    //post change_password
+    async change_password(req, res, next) {
+        jwt.verify(req.cookies.token, process.env.APP_SECRET, async (err, token) => {
+            if (err) {
+                return res.status(500).json({
+                    message: err.message
+                })
+            }
+            else {
+                let user = await User.findOne({
+                    email: token
+                })
+                if (user) {
+                    user.password = req.body.password;
+                    user.save()
+                        .then(function (data) {
+                            return res.status(200).json(data);
+                        })
+                        .catch(function (err) {
+                            return res.status(500).json({
+                                message: err.message
+                            })
+                        })
+                }
+                else {
+                    return res.status(500).json({
+                        message: 'User not found'
+                    })
+                }
+            }
+        })
+    }
 }
+
 module.exports = new authenticationController();
