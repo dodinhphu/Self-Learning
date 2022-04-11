@@ -80,8 +80,11 @@ $('#btn_register').click(function () {
                         $('#toan_rgt').append(e1);
                     }
                 })
-                .catch(function (er) {
-
+                .catch(function (err) {
+                    $('#tb_dk').removeClass();
+                    $('#tb_dk').addClass("alert alert-danger");
+                    $('#tb_dk').text(err.responseJSON.message);
+                    $('#tb_dk').show(200);
                 })
         }
     });

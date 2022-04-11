@@ -38,10 +38,49 @@ $('.ip-login').focus(function () {
     $('#tb_tb_lg').hide(200);
 })
 
+/* quên mật khẩu */
+function quen_mk() {
+    $('#noidungmodule').css('background-color', '#ccc');
+    $('#noidungmodule').append('<div id="loader" class="loader"></div>')
+    $('#email_quen').attr('readonly', true);
+    $('#email_quen').css('cursor', "not-allowed");
+    $.ajax({
+        url: '/authentication/resetpassword',
+        type: "POST",
+        data: {
+            email: $('#email_quen').val().toString(),
+        },
+    })
+        .then(function (data) {
+            $('#loader').remove();
+            $('#email_quen').attr('readonly', false);
+            $('#email_quen').css('cursor', "text");
+            $('#noidungmodule').css('background-color', '#fff');
+            $('#txt_tbqmk_true').text(`Please check your emails ${data.accepted[0]}`);
+            $('#email_quen').val('');
+            $('#email_quen').hide();
+            $('#btn_qmk_ctn').hide();
+            $('#qmk_true').show(200);
+        })
+        .catch(function (err) {
+            $('#loader').remove();
+            $('#email_quen').attr('readonly', false);
+            $('#email_quen').css('cursor', "text");
+            $('#noidungmodule').css('background-color', '#fff');
+            $('#txt_tbqmk_false').text(JSON.parse(err.responseText).message);
+            $('#qmk_false').show(200);
+        })
+}
 
-
-
-
+function an_qmk() {
+    $('#email_quen').val('');
+    $('#qmk_false').hide(200);
+    $('#qmk_true').hide(200);
+}
+function hien_qmk() {
+    $('#email_quen').show();
+    $('#btn_qmk_ctn').show();
+}
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
