@@ -1,13 +1,14 @@
 const express = require('express');
 const { verify } = require('jsonwebtoken');
 const verifyToken = require("../middleware/verifyToken");
+const check_noLogin = require("../middleware/check_noLogin");
 const routes = express.Router();
 const authenticationController = require('../controllers/authenticationController')
 
 /* không xác thực */
-routes.get('/login', authenticationController.show_login);
-routes.get('/register', authenticationController.show_register);
-routes.get('/forgotpassword', authenticationController.show_forgotPassword);
+routes.get('/login', check_noLogin, authenticationController.show_login);
+routes.get('/register', check_noLogin, authenticationController.show_register);
+routes.get('/forgotpassword', check_noLogin, authenticationController.show_forgotPassword);
 
 /* có xác thực */
 routes.get('/updateinformation', verifyToken, authenticationController.show_update);
@@ -15,10 +16,10 @@ routes.get('/changepassword', verifyToken, authenticationController.show_changeP
 routes.get('/logout', verifyToken, authenticationController.logout);
 
 /* không xác thực */
-routes.post('/register', authenticationController.register);
-routes.post('/login', authenticationController.login);
-routes.post('/resetpassword', authenticationController.resetPassword);
-routes.post('/changepassword', authenticationController.changePassword);
+routes.post('/register', check_noLogin, authenticationController.register);
+routes.post('/login', check_noLogin, authenticationController.login);
+routes.post('/resetpassword', check_noLogin, authenticationController.resetPassword);
+routes.post('/changepassword', check_noLogin, authenticationController.changePassword);
 
 /* có xác thực */
 routes.post('/updateinformation', verifyToken, authenticationController.updateInformation);
