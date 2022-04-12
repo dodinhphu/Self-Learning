@@ -14,10 +14,7 @@ verifyToken = (req, res, next) => {
             }
             else {
                 let data = {
-                    username: token.username,
-                    quyen: token.quyen,
-                    email: token.email,
-                    fullname: token.fullname
+                    email: token
                 }
                 req.data = data;
                 next();

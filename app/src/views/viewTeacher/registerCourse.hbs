@@ -1,0 +1,48 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/authentication/register.css">
+{{/section}}
+
+{{#section 'title'}}Creater Course{{/section}}
+
+{{#section 'javascript'}}
+<script src="/js/teacher/teacher.js"></script>
+{{/section}}
+
+<div class="all-register container-fluid">
+    <div class="bg-light row no-gutter">
+        <div class=" ">
+            <div class="register d-flex ">
+                <div id="tttong" class="container">
+                    <div id="toan_rgt" class="row">
+                        <h4 id="tieude" style=" text-align:center" class="display-6">Creater Course</h4>
+                        <br>
+                        <div id="tb_dk" style="margin-top: 8px;text-align:center;width:600px;margin:30px auto" class="" role="alert">
+                        </div>
+                        <form enctype="multipart/form-data" id="register_form">
+                            <div class="form_item">
+                                <label for="validationDefault01">Course Name</label>
+                                <input id="txt_coursename" type="text" class="form-control inpux_dk" Name="coursename"
+                                    placeholder="Course Name">
+                            </div>
+                            <div class="form_item">
+                                <label for="validationDefault01">Course Price</label>
+                                <input id="txt_courseprice" type="number" class="form-control inpux_dk"
+                                    name="courseprice" placeholder="Course Price">
+                            </div>
+                            <div class="form_item">
+                                <label for="validationDefault01">Course Description</label>
+                                <input id="txt_coursedescription" type="text" class="form-control inpux_dk"
+                                    name="courseDescription" placeholder="Course Description">
+                            </div>
+                            <div class="form_item">
+                                <label for="validationDefault01">Course Image</label>
+                                <input name="myfile" class="form-control" type="file" id="formFile">
+                            </div>
+                            <button id="btn_creater" type="submit" class="btn btn-success btn-register">Creater</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
