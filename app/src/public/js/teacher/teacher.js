@@ -65,6 +65,79 @@ $('#btn_creater').click(function () {
     });
 })
 
+$('#btn_update').click(function () {
+    $("#register_form").validate({
+        rules: {
+            coursename: {
+                required: true,
+            },
+            courseprice: {
+                required: true,
+                number: true,
+                min: 0
+            },
+            courseDescription: "required",
+            myfile: "required",
+        },
+        messages: {
+            coursename: {
+                required: "Please enter Course Name",
+            },
+            courseprice: {
+                required: "Please enter Course Price",
+                number: "Must enter number type",
+                min: "Amount must be greater than or equal to 0"
+            },
+            courseDescription: "Please enter Course Description",
+            myfile: "Please upload a file"
+        },
+        submitHandler: function (form) {
+            let formdata = new FormData();
+            let txt_courseid = $("#txt_courseid").val();
+            let txt_coursename = $("#txt_coursename").val();
+            let txt_courseprice = $("#txt_courseprice").val();
+            let txt_coursedescription = $("#txt_coursedescription").val();
+            let formFile = $("#formFile").get(0);
+            let file_anh = formFile.files;
+            formdata.append('course_id', txt_courseid);
+            formdata.append('course_name', txt_coursename);
+            formdata.append('course_price', txt_courseprice);
+            formdata.append('course_description', txt_coursedescription);
+            formdata.append('myfile', file_anh[0])
+            $.ajax({
+                url: "/teacher/updatecourse",
+                type: "POST",
+                data: formdata,
+                contentType: false,
+                processData: false,
+            })
+                .then(function (data) {
+                    $('#tieude').hide(100);
+                    $('form').hide(100);
+                    $('#tttong').removeClass();
+                    $('#tttong').addClass("container-fluid");
+                    $('#tb_dk').removeClass();
+                    $('#tb_dk').addClass("alert alert-success");
+                    $('#tb_dk').text(data.message);
+                    $('#tb_dk').show(200);
+                    let e1 = html(data.data);
+                    $('#toan_rgt').append(e1);
+                })
+                .catch(function (err) {
+                     $('#tb_dk').removeClass();
+                     $('#tb_dk').addClass("alert alert-danger");
+                     $('#tb_dk').text(err.responseJSON.message);
+                     $('#tb_dk').show(200);
+                })
+
+        }
+    });
+})
+
+
+
+
+
 $('.inpux_dk').focus(function () {
     $('#tb_dk').hide(200);
 })

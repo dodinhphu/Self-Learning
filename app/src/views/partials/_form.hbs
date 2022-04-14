@@ -1,0 +1,39 @@
+<form enctype="multipart/form-data" id="register_form">
+    {{#if data}}
+    <div  style="display: none !important;" class="form_item">
+        <input value="{{data.course_id}}" id="txt_courseid" type="text"
+            class="form-control inpux_dk" Name="coursename" placeholder="Course Name">
+    </div>
+    {{/if}}
+    <div class="form_item">
+        <label for="validationDefault01">Course Name</label>
+        <input value="{{data.course_name}}" id="txt_coursename" type="text" class="form-control inpux_dk"
+            Name="coursename" placeholder="Course Name">
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Course Price</label>
+        <input value="{{data.course_price}}" id="txt_courseprice" type="number" class="form-control inpux_dk"
+            name="courseprice" placeholder="Course Price">
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Course Description</label>
+        <input value="{{data.course_description}}" id="txt_coursedescription" type="text" class="form-control inpux_dk"
+            name="courseDescription" placeholder="Course Description">
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Course Image</label>
+        {{#if data}}
+        <div>
+            <img style="width:150px; margin:12px 10px 20px 10px" src="/upload/{{data.course_img}}" alt="">
+            <div>
+                <input name="myfile" class="form-control" type="file" id="formFile">
+            </div>
+
+        </div>
+        {{else}}
+        <label for="validationDefault01">Course Image</label>
+        <input name="myfile" class="form-control" type="file" id="formFile">
+        {{/if}}
+    </div>
+    <button id="{{id_btn}}" type="submit" class="btn btn-success btn-register">{{btn_name}}</button>
+</form>
