@@ -17,7 +17,6 @@ verifyToken = async (req, res, next) => {
                 let user = await User.findOne({
                     email: token
                 })
-                console.log(user)
                 if (user && user.type == 1) {
                     let data = {
                         email: user.email,
