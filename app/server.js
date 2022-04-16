@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser')
 const db = require('./config/db/db');
 const cors = require('cors');
 const bodyParser = require('body-parser')
-
+/* helpers */
+/*  */
 db.connectDB();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
@@ -24,6 +25,10 @@ app.engine('hbs', engine({
         section: hbs_sections(),
         check_quyen: (quyen, so) => {
             if (quyen == so) return true;
+            else return false
+        },
+        check_gia: (gia) => {
+            if (Number(gia) == 0) return true;
             else return false
         }
     }

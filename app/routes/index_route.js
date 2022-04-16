@@ -8,7 +8,6 @@ function route(app) {
     app.use(get_user);
     app.use('/teacher', check_teacher, teacherRoute);
     app.use('/authentication', authenticationRoute);
-    app.use('/home', homeRoute);
     app.use('/', homeRoute);
     app.all('*', (req, res, next) => {
         const err = new Error('Không Tồn Tại Trang !!!');
