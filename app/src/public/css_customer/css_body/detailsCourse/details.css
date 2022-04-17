@@ -1,0 +1,178 @@
+.content_details {
+    margin: 30px 0;
+}
+
+.ten-khoahoc h3 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    font-style: italic;
+    color: #3d3b3b;
+}
+
+.motakh p {
+    padding: 0;
+    margin: 0;
+    color: rgba(0, 0, 0, .8);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.list_hoc {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.list_hoc li {
+    display: flex;
+    flex-basis: 50%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding: 0 24px;
+    position: relative;
+}
+
+.item-kq svg {
+    font-size: 1.2rem;
+    left: 0;
+    position: absolute;
+    top: 7px;
+    color: rgb(24, 229, 116);
+}
+
+.item-kq span {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, .8);
+}
+
+.ketquasaukhihoc h6,
+.nd-kh h6,
+.yc h6 {
+    font-size: 1.4rem;
+    margin: 24px 0;
+    font-weight: 700;
+    padding: 22px 14px;
+    background: #ebeaea;
+    border: 1px solid #b5b5b5;
+    border-radius: 6px;
+}
+
+.t_tungbai {
+    display: flex;
+    padding: 24px 40px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.t_tungbai svg {
+    align-self: center;
+    margin-right: 10px;
+    color: rgb(0, 235, 12);
+}
+
+.tong_t {
+    font-size: 1.2rem;
+}
+
+.bai {
+    font-weight: 500;
+}
+
+
+.bg_img {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding-top: 56.25%;
+    width: 100%;
+}
+
+.d_gia {
+    text-align: center;
+    margin: 14px 0;
+}
+
+.d_gia span {
+    font-size: 34px;
+    font-weight: 400;
+    color: #f05123;
+}
+
+.t_btn_dk {
+    text-align: center;
+}
+
+.t_btn_dk button {
+    margin: 14px auto;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 999px !important;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    outline: none;
+    padding: 9px 16px;
+    text-align: center;
+    transition: .3s ease;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    background: #22ec01;
+    color: #f05123;
+    border: 2px solid #17d854;
+}
+
+.list_yc {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+.item-yc {
+    margin: 20px 0;
+}
+
+.item-yc svg {
+    margin-right: 10px;
+    color: rgb(24, 229, 116);
+}
+
+.trinhdo,
+.so_bai_giag,
+.dk_h {
+    margin: 16px 0 16px 90px;
+}
+
+.ttt_ svg {
+    margin-right: 18px;
+    align-self: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.ttt_ span {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.bg_img {
+    border-radius: 16px;
+}
+
+
+.motakh,
+.ketquasaukhihoc,
+.nd-kh,
+.yc {
+    margin-bottom: 20px;
+}
+
+.sticky_top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 82px;
+    z-index: 2;
+}

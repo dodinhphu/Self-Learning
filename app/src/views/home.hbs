@@ -1,11 +1,67 @@
-{{#section 'javascript'}}
-<script src="/js/tiny-slider.js"></script>
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/home/home.css">
 {{/section}}
-{{#if kt}}
-{{else}}
-{{>slide}}
-{{/if}}
-{{!-- nội dung trang home --}}
-<h3>
-    Đây Là Trang Home
-</h3>
+
+{{#section 'title'}}Home{{/section}}
+{{#section 'javascript'}}
+<script src=""></script>
+{{/section}}
+
+<div class="body">
+    <div style="background-color: #e2e2e2;" class="container-fluid">
+        {{#if data}}
+        <div class="row">
+            <div class="all_dm">
+                <div class="danhmuc_"> Front end</div>
+                <a class="linkdm" href="">Xem chi tiết ></a>
+            </div>
+            {{#each data}}
+            <div class="col-lg-3  toan_khoa">
+                <a class="link_khoa_hoc" href="/course/{{this.course_id}}/details">
+                    <div class="card shadow-lg">
+                        <img src="/upload/{{this.course_img}}" class="card-img-top" alt="reactjs">
+                        <div class="card-body card_nd">
+                            <h6 class="ten_khoahoc">{{this.course_name}}</h6>
+                            <div class="nguoihoc">
+                                <i class="icon_cardkh fas fa-users"></i>
+                                <p class="chu_trd">{{this.course_member.length}}
+                                </p>
+                            </div>
+                            <div class="nguoi_day">
+                                <i class="icon_cardkh fas fa-user-graduate"></i>
+                                <p class="chu_trd">{{ this.name }}</p>
+                            </div>
+                            <div class="soluongvideo">
+                                <i class="icon_cardkh fas fa-video"></i>
+                                <p class="chu_trd"> {{this.course_lesson.length}}/{{this.course_lesson.length}}
+                                </p>
+                            </div>
+                            <div class="price_kh">
+                                <i style="align-self: center;" class="icon_cardkh fa-solid fa-money-check-dollar"></i>
+                                <p class="chu_trd txt_gia">
+                                    {{#if (check_gia this.course_price) }}
+                                    Free
+                                    {{else}}
+                                    {{this.course_price}}đ
+                                    {{/if}}
+                                </p>
+                            </div>
+                            <div class="danh_giasao">
+                                <i class="sao fa-solid fa-star"></i>
+                                <i class="sao fa-solid fa-star"></i>
+                                <i class="sao fa-solid fa-star"></i>
+                                <i class="sao fa-solid fa-star"></i>
+                                <i class="sao fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        {{!--trống --}}
+        <h1>Không có khóa học</h1>
+        {{/if}}
+    </div>
+</div>
