@@ -1,0 +1,113 @@
+:root {
+    --text-color: #444444;
+    --primary-color: #0EDC8D;
+}
+
+.exercise {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 90vh;
+}
+
+
+/* {{!-- Đề --}} */
+.exercise__thread {
+    width: 50%;
+}
+
+.exercise__thread-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding-left: 16px;
+    border-bottom: 5px solid var(--primary-color);
+}
+.exercise__thread-content {
+    margin: 30px;
+}
+.thread-content__title {
+    margin: 20px 0;
+    color: #333333;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.thread-content__in-output {
+    margin-bottom: 20px;
+}
+.thread-content__in-output p {
+    font-size: 18px;
+    color: var(--text-color);
+}
+.thread-content__in-output div {
+    background-color: #353434;
+    border-radius: 5px;
+    padding: 16px;
+    color: #DDDDDD;
+}
+
+
+
+/* Code Editor */
+
+.exercise__code {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #353534;
+}
+.exercise__code-header {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    background-color: #1E1F1F;
+    padding-left: 15px;
+}
+.exercise__code-header img {
+    width: 26px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.exercise__code-header h2 {
+    color: #DDDDDD;
+    font-weight: 300;
+    font-size: 24px;
+    
+}
+
+.exercise__code-content.code-content__text {
+    width: 100%;
+    height: 45vh;
+    padding: 10px 50px;
+    background-color: #1E1F1F;
+    color: var(--text-color);
+    border: none;
+    resize: none;
+}
+.exercise__code-bottom {
+    color: #d6d4d4;
+}
+.exercise__code-bottom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    border-bottom: 1px solid var(--primary-color);
+}   
+.exercise__code-bottom-header button {
+    border-radius: 8px;
+    padding: 2px 14px;
+    margin-bottom: 5px;
+    border: none;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+.exercise__code-bottom-header button:hover {
+    filter: brightness(.9);
+}
+.exercise__code-bottom-result {
+    margin: 20px 0;
+}

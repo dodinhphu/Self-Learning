@@ -14,6 +14,14 @@
     {{!-- link layout css --}}
     <link rel="stylesheet" href="/css_customer/css_layout/tiny-slider.css">
     <link rel="stylesheet" href="/css_customer/css_layout/main.css">
+
+    {{!-- Css and link need to run Excercise --}}
+    <link rel="stylesheet" href="/css_customer/css_body/exercise/exercise.css">
+    <script src="/codemirror-5.65.3/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/codemirror-5.65.3/lib/codemirror.css">
+    <link rel="stylesheet" href="/codemirror-5.65.3/theme/monokai.css">  
+    <script src="/codemirror-5.65.3/mode/javascript/javascript.js"></script>
+    
     {{!-- link customer css --}}
     {{{_sections.css}}}
     <link rel='shortcut icon' href='/images/favicon.ico' />
@@ -26,10 +34,96 @@
             {{>header}}
         </header>
         {{{body}}}
+        
+        {{!-- Exercise  --}}
+        <div class="exercise">
+            {{!-- Đề --}}
+            <div class="exercise__thread">
+                <div class="exercise__thread-header">
+                    <h2>Excercise 1</h2>
+                </div>
+                <div class="exercise__thread-content">
+                    <h3 class="thread-content__title">
+                        Hãy tạo Function plus() có thể cộng 2 số với nhau
+                    </h3>
+                    <div class="thread-content__in-output">
+                        <p>Input: </p>
+                        <div>
+                            a = 2; 
+                            <br>
+                            b = 3;
+                        </div>
+                    </div>
+                    <div class="thread-content__in-output">
+                        <p>Output: </p>
+                        <div>
+                            5
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Code Editor--}}
+            <div class="exercise__code">
+                <div class="exercise__code-top">
+                    <div class="exercise__code-header">
+                        <img src="/upload/js.png" alt="">
+                        <h2>index.js</h2>
+                    </div>
+
+                    <div class="exercise__code-content">
+                        <textarea id="textcodeJS" class="code-area code-content__text" style="color:#fff;" name="" ></textarea>
+                    </div>
+                </div>
+
+                <div class="exercise__code-bottom">
+                    <div class="exercise__code-bottom-header">
+                        <p>Result</p>
+                        <button class="exercise__run-code">Run code</button>
+                    </div>
+                    <div class="exercise__code-bottom-result">
+                        <textarea id="textcodeJS" class="code-area" style="color:#fff;" name="" ></textarea>
+                        <button class="exercise__run-code">Run code</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
         <footer>
             {{>footer}}
         </footer>
     </div>
+
+
+
+    {{!-- Excercise --}}
+    <script >
+        window.onload = () => {
+            const [input,output] = document.querySelectorAll(".code-area");
+            const [run,clear] = document.querySelectorAll(".exercise__run-code");
+
+            const inputCode = CodeMirror.fromTextArea(input, {lineNumbers: true});
+            const outputCode = CodeMirror.fromTextArea(output, {lineNumbers: false});
+
+            run.addEventListener("click",()=> {
+                const codeToRun = inputCode.getValue().toString();
+                try {
+                    outputCode.replaceRange('$ '+ eval(`${codeToRun}`) + "\n", CodeMirror.Pos(outputCode.lastLine()));
+                }
+                catch (e) {
+                    outputCode.replaceRange('$ '+ e + "\n", CodeMirror.Pos(outputCode.lastLine()));
+
+                }
+            });
+        }
+    </script>
+
+
+
+
     {{!-- jquery --}}
     <script src="/bootstrap_jquery/jquery/jquery-3.6.0.min.js"></script>
     <script src="/bootstrap_jquery/jquery/jquery.validate.min.js"></script>
@@ -40,6 +134,9 @@
     <script src="/bootstrap_jquery/bootstrap-5.1.3/js/bootstrap.js"></script>
     <script src="/icon/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/js/all.min.js"></script>
     <script src="/js/home.js"></script>
+    
+    {{!-- Link script of Excercise --}}
+    
 
     {{!-- link js customer --}}
     {{{_sections.javascript}}}
