@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css_customer/css_body/detailsCourse/details.css">
 {{/section}}
 
-{{#section 'title'}}Details Course{{/section}}
+{{#section 'title'}}Details Class{{/section}}
 {{#section 'javascript'}}
 <script src="/js/lesson/lesson.js"></script>
 {{/section}}
@@ -33,11 +33,21 @@
                 <div class="nd-kh">
                     <div class="sticky_top">
                         <div style="padding-top: 4px;"></div>
-                        <h6 style="margin:0 ;">Nội Dung Khóa Học</h6>
+                        <div>
+                            <h6 style="margin:0;display:flex;justify-content:space-between ;">
+                                Nội Dung Khóa Học
+                                <a href="/teacher/{{data.course_id}}/createlesson">
+                                    <div class="add_lesson" style="display: flex;font-size:18px;">
+                                        <i class="fa-solid fa-calendar-plus"></i>
+                                        Thêm
+                                    </div>
+                                </a>
+                            </h6>
+
+                        </div>
                     </div>
-                    {{#if data.course_lesson }}
                     {{#each data.course_lesson}}
-                    <div class="t_tungbai">
+                    <div id="{{this._id}}" class="t_tungbai">
                         <i class="fa-solid fa-circle-play"></i>
                         <div class="tong_t">
                             <div>
@@ -45,16 +55,16 @@
                                 <span class="ten_bai">{{this.lesson_name}}</span>
                             </div>
                             <div class="tong_btnxs">
-                                <a href="">
-                                    <i class="fa-solid fa-eye"></i>
+                                <a href="/teacher/{{../data.course_id}}/updatelesson/{{this._id}}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
+                                <div>
+                                    <i onclick="delete_lesson('/teacher/{{../data.course_id}}/deletelesson/{{this._id}}')" class="fa-solid fa-delete-left"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {{/each}}
-                    {{else}}
-                    <div class="txt_chuab">Chưa Có Bài Học</div>
-                    {{/if}}
                 </div>
                 <div class="yc">
                     <h6>Yêu Cầu</h6>
@@ -96,34 +106,9 @@
                         <span>{{data.course_price}}đ</span>
                         {{/if}}
                     </div>
-                    {{#if (check_quyen quyen 2)}}
-                    {{#if kt_member}}
-                    <div id="chua_btn" class="t_btn_dk">
-                        <button id="btn_hocngay">Học Ngay</button>
-                    </div>
-                    {{else}}
-                    <div id="chua_btn" class="t_btn_dk">
-                        <button onclick="join_lesson('/student/{{data.course_id}}/joinlesson')" id="btn_dk_khoahoc">Đăng Ký Khóa Học</button>
-                    </div>
-                    {{/if}}
-                    {{/if}}
-                    <div class="ttt_">
-                        <div class="trinhdo">
-                            <i class="fa-solid fa-gauge-high"></i>
-                            <span>Trình Độ Cơ Bản</span>
-                        </div>
-                        <div class="so_bai_giag">
-                            <i class="fa-solid fa-film"></i>
-                            <span>Tổng Số <span style="font-weight: 600;">{{data.course_lesson.length}}</span> Bài
-                                Học</span>
-                        </div>
-                        <div class="dk_h">
-                            <i class="fa-solid fa-battery-full"></i>
-                            <span>Học Mọi Lúc, Mọi Nơi</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

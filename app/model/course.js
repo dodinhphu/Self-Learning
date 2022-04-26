@@ -2,60 +2,68 @@ const { type } = require('express/lib/response');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
+
+let lesson = new mongoose.Schema({
+    lesson_STT: {
+        type: String,
+        unique: [true, 'Số Thứ Tự Bài Học Đã Tồn Tại'],
+        required: [true, 'Bạn Cần Nhập Số Thứ Tự Cho Bài Học'],
+        trim: true
+    },
+    lesson_name: {
+        type: String,
+        required: [true, 'Bạn Cần Nhập Tên Cho Bài Học']
+    },
+    lesson_video: {
+        type: String,
+        required: [true, 'Bạn Cần Thêm Video Cho Bài Học Này']
+    },
+    dateCreater: {
+        type: String,
+        default: new Date().toDateString()
+    }
+});
+
 const course = new Schema({
     course_id: {
         type: String,
-        unique: [true, 'Course Already Exists '],
+        unique: [true, 'Khóa Học Đã Tồn Tại'],
         trim: true,
-        required: [true, 'You have not entered your id course'],
+        required: [true, 'Bạn Cần Nhập ID Của Khóa Học'],
         default: uuidv4()
     },
     course_name: {
         type: String,
-        required: [true, 'You have not entered your course name']
+        required: [true, 'Bạn Cần Nhập Tên Của Khóa Học']
     },
     course_author: {
         type: String,
         trim: true,
-        required: [true, 'You have not entered your author']
+        required: [true, 'Khóa Học Chưa Có Tác Giả']
     },
     course_price: {
         type: Number,
         default: 0,
-        required: [true, 'You have not entered your course price']
+        required: [true, 'Bạn Cần Nhập Giá Của Khóa Học']
     },
     course_description: {
         type: String,
-        required: [true, 'You have not entered your course description']
+        required: [true, 'Hãy Mô Tả Khóa Học Này']
+    },
+    course_result: {
+        type: Array,
+        required: [true, 'Kết Quả Khóa Học Của Bạn']
     },
     course_img: {
         type: String,
-        unique: [true, 'Images Already Exists '],
-        required: [true, 'You have not entered your course image']
+        unique: [true, 'Ảnh Đã Bị Trùng Tên'],
+        required: [true, 'Bạn Cần Chọn Ảnh Cho Khóa Học']
     },
     course_member: {
         type: Array,
         default: []
     },
-    course_lesson: {
-        type: [
-            {
-                lesson_name: {
-                    type: String,
-                    required: [true, 'You have not entered your lesson name']
-                },
-                lesson_video: {
-                    type: String,
-                    required: [true, 'You have not entered your lesson video']
-                },
-                dateCreater: {
-                    type: String,
-                    default: new Date().toDateString()
-                }
-            }
-        ],
-        default: [],
-    },
+    course_lesson: [lesson],
     course_status: {
         type: Boolean,
         default: true

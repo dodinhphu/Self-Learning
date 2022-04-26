@@ -1,27 +1,32 @@
 <form enctype="multipart/form-data" id="register_form">
     {{#if data}}
-    <div  style="display: none !important;" class="form_item">
-        <input value="{{data.course_id}}" id="txt_courseid" type="text"
-            class="form-control inpux_dk" Name="coursename" placeholder="Course Name">
+    <div style="display: none !important;" class="form_item">
+        <input value="{{data.course_id}}" id="txt_courseid" type="text" class="form-control inpux_dk" Name="coursename"
+            placeholder="Course Name">
     </div>
     {{/if}}
     <div class="form_item">
-        <label for="validationDefault01">Course Name</label>
+        <label for="validationDefault01">Tên Khóa Học</label>
         <input value="{{data.course_name}}" id="txt_coursename" type="text" class="form-control inpux_dk"
-            Name="coursename" placeholder="Course Name">
+            Name="coursename" placeholder="Tên Khóa Học">
     </div>
     <div class="form_item">
-        <label for="validationDefault01">Course Price</label>
+        <label for="validationDefault01">Giá Khóa Học</label>
         <input value="{{data.course_price}}" id="txt_courseprice" type="number" class="form-control inpux_dk"
-            name="courseprice" placeholder="Course Price">
+            name="courseprice" placeholder="Giá Khóa Học">
     </div>
     <div class="form_item">
-        <label for="validationDefault01">Course Description</label>
-        <input value="{{data.course_description}}" id="txt_coursedescription" type="text" class="form-control inpux_dk"
-            name="courseDescription" placeholder="Course Description">
+        <label for="validationDefault01">Mô Tả Khóa Học</label>
+        <textarea id="txt_coursedescription" type="text" class="text_area form-control inpux_dk" name="courseDescription"
+            placeholder="Mô Tả Khóa Học" rows="3">{{data.course_description}}</textarea>
     </div>
     <div class="form_item">
-        <label for="validationDefault01">Course Image</label>
+        <label for="validationDefault01">Kết Quả Đạt Được</label>
+        <textarea value="{{data.course_description}}" id="txt_course_result" class="text_area form-control inpux_dk"
+            name="course_result" placeholder="Kết Quả Đạt Được" rows="3">{{#each data.course_result}}{{{this}}}&#10{{/each}}</textarea>
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Ảnh</label>
         {{#if data}}
         <div>
             <img style="width:150px; margin:12px 10px 20px 10px" src="/upload/{{data.course_img}}" alt="">
@@ -31,7 +36,6 @@
 
         </div>
         {{else}}
-        <label for="validationDefault01">Course Image</label>
         <input name="myfile" class="form-control" type="file" id="formFile">
         {{/if}}
     </div>

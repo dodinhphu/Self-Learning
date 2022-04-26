@@ -10,30 +10,34 @@ $('#btn_creater').click(function () {
                 min: 0
             },
             courseDescription: "required",
+            course_result: "required",
             myfile: "required",
         },
         messages: {
             coursename: {
-                required: "Please enter Course Name",
+                required: "Không Được Bỏ Trống Tên Khóa Học",
             },
             courseprice: {
-                required: "Please enter Course Price",
-                number: "Must enter number type",
-                min: "Amount must be greater than or equal to 0"
+                required: "Không Được Bỏ Trống Giá",
+                number: "Sai Định Dạng",
+                min: "Giá Nhỏ nhất Là 0"
             },
-            courseDescription: "Please enter Course Description",
-            myfile: "Please upload a file"
+            courseDescription: "Hãy Nhập Mô Tả Cho Khóa Học",
+            course_result: "Hãy Nhập Kết Quả Đạt Được Của Khóa Học",
+            myfile: "Chọn Ảnh Cho Khóa Học"
         },
         submitHandler: function (form) {
             let formdata = new FormData();
             let txt_coursename = $("#txt_coursename").val();
             let txt_courseprice = $("#txt_courseprice").val();
             let txt_coursedescription = $("#txt_coursedescription").val();
+            let txt_course_result = $("#txt_course_result").val();
             let formFile = $("#formFile").get(0);
             let file_anh = formFile.files;
             formdata.append('course_name', txt_coursename);
             formdata.append('course_price', txt_courseprice);
             formdata.append('course_description', txt_coursedescription);
+            formdata.append('course_result', txt_course_result);
             formdata.append('myfile', file_anh[0])
             $.ajax({
                 url: "/teacher/createcourse",
@@ -77,19 +81,21 @@ $('#btn_update').click(function () {
                 min: 0
             },
             courseDescription: "required",
+            course_result: "required",
             myfile: "required",
         },
         messages: {
             coursename: {
-                required: "Please enter Course Name",
+                required: "Không Được Bỏ Trống Tên Khóa Học",
             },
             courseprice: {
-                required: "Please enter Course Price",
-                number: "Must enter number type",
-                min: "Amount must be greater than or equal to 0"
+                required: "Không Được Bỏ Trống Giá",
+                number: "Sai Định Dạng",
+                min: "Giá Nhỏ nhất Là 0"
             },
-            courseDescription: "Please enter Course Description",
-            myfile: "Please upload a file"
+            courseDescription: "Hãy Nhập Mô Tả Cho Khóa Học",
+            course_result: "Hãy Nhập Kết Quả Đạt Được Của Khóa Học",
+            myfile: "Chọn Ảnh Cho Khóa Học"
         },
         submitHandler: function (form) {
             let formdata = new FormData();
@@ -97,12 +103,14 @@ $('#btn_update').click(function () {
             let txt_coursename = $("#txt_coursename").val();
             let txt_courseprice = $("#txt_courseprice").val();
             let txt_coursedescription = $("#txt_coursedescription").val();
+            let txt_course_result = $("#txt_course_result").val();
             let formFile = $("#formFile").get(0);
             let file_anh = formFile.files;
             formdata.append('course_id', txt_courseid);
             formdata.append('course_name', txt_coursename);
             formdata.append('course_price', txt_courseprice);
             formdata.append('course_description', txt_coursedescription);
+            formdata.append('course_result', txt_course_result);
             formdata.append('myfile', file_anh[0])
             $.ajax({
                 url: "/teacher/updatecourse",
@@ -124,10 +132,10 @@ $('#btn_update').click(function () {
                     $('#toan_rgt').append(e1);
                 })
                 .catch(function (err) {
-                     $('#tb_dk').removeClass();
-                     $('#tb_dk').addClass("alert alert-danger");
-                     $('#tb_dk').text(err.responseJSON.message);
-                     $('#tb_dk').show(200);
+                    $('#tb_dk').removeClass();
+                    $('#tb_dk').addClass("alert alert-danger");
+                    $('#tb_dk').text(err.responseJSON.message);
+                    $('#tb_dk').show(200);
                 })
 
         }
@@ -144,6 +152,7 @@ $('.inpux_dk').focus(function () {
 
 
 function html(data) {
+    console.log(data)
     let html = `
                         <div class="row no-gutter">
                             <div style=" background-image: url('/upload/${data.course_img}');" class="col-md-6 d-none d-md-flex bg-images"></div>
@@ -159,49 +168,58 @@ function html(data) {
                                                 </h6>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
                                                         ID &nbsp;</p>
-                                                    <span>: &ensp; ${data.course_id} </span>
+                                                    <span>:  ${data.course_id} </span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Name &nbsp;</p>
-                                                    <span>: &ensp; ${data.course_name}</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Tên &nbsp;</p>
+                                                    <span>:${data.course_name}</span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Author &nbsp;</p>
-                                                    <span>: &ensp; ${data.course_author}</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Tác Giả &nbsp;</p>
+                                                    <span>:${data.course_author}</span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Price &nbsp;</p>
-                                                    <span style="color: #e90fc7;">: &ensp; ${formatCash(data.course_price.toString())}đ</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Giá &nbsp;</p>
+                                                    <span style="color: #e90fc7;">:${formatCash(data.course_price.toString())}đ</span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Member &nbsp;</p>
-                                                    <span style="color: #e90fc7;">: &ensp; ${data.course_member.length}</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Thành Viên &nbsp;</p>
+                                                    <span style="color: #e90fc7;">:${data.course_member.length}</span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Lesson &nbsp;</p>
-                                                    <span style="color: #e90fc7;">: &ensp; ${data.course_lesson.length}</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Bài Học &nbsp;</p>
+                                                    <span style="color: #e90fc7;">:${data.course_lesson.length}</span>
                                                 </div>
                                                 <div style="display: flex;margin-bottom:20px;">
                                                     <p
-                                                        style="min-width: 90px;align-self:center;font-weight:600;color:#237b59;">
-                                                        Description &nbsp;</p>
-                                                    <span>: &ensp; ${data.course_description}</span>
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Mô Tả &nbsp;</p>
+                                                    <span>:${data.course_description}</span>
+                                                </div>
+                                                <div style="display: flex;margin-bottom:20px;">
+                                                    <p
+                                                        style="min-width: 90px;font-weight:600;color:#237b59;">
+                                                        Kết Quả &nbsp;</p>
+                                                    <span>:${load_kq(data)}</span>
                                                 </div>
                                                 <div style="text-align: end;">
-                                                    <button type="button" class="btn btn-success">Go to the
-                                                        course</button>
+                                                   <a href="/course/${data.course_id}/details">
+                                                    <button type="button" class="btn btn-success">
+                                                        Go to the course
+                                                    </button>
+                                                   </a>
                                                 </div>
                                             </div>
 
@@ -212,6 +230,14 @@ function html(data) {
                         </div>
     `
     return html;
+}
+function load_kq(data){
+    
+    let a='';
+    for(let i = 0; i< data.course_result.length;i++){
+        a+= `- ${data.course_result[i]} <br>`
+    }
+    return a
 }
 function formatCash(str) {
     return str.split('').reverse().reduce((prev, next, index) => {

@@ -1,0 +1,42 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/authentication/register.css">
+{{/section}}
+
+{{#section 'title'}}Creater Lesson{{/section}}
+
+{{#section 'javascript'}}
+<script src="/js/lesson/lesson.js"></script>
+{{/section}}
+
+<div class="all-register container-fluid">
+    <div class="bg-light row no-gutter">
+        <div class=" ">
+            <div class="register d-flex ">
+                <div id="tttong" class="container">
+                    <div id="toan_rgt" class="row">
+                        <h4 id="tieude" style=" text-align:center" class="display-6">{{title}}</h4>
+                        <br>
+                        <div id="tb_dk" style="margin-top: 8px;text-align:center;width:600px;margin:30px auto" class=""
+                            role="alert">
+                        </div>
+                        {{>_form-lesson}}
+                        <div class="tong_ttba">
+                            <div id="tb_dk_tc" style="margin-top: 8px;text-align:center;width:600px;margin:30px auto"
+                                class="alert alert-success" role="alert">
+                            </div>
+                            <div style="display: flex;justify-content:center;">
+                                <a style="margin-right: 8px;" href="/teacher/{{id}}/detailsclass">
+                                    <button type="button" class="btn btn-secondary">Đi Tới Khóa Học</button>
+                                </a>
+                                <a href="/teacher/{{id}}/createlesson">
+                                    <button type="button" class="btn btn-primary">Tạo Bài Học Mới</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

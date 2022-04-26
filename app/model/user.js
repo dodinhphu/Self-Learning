@@ -10,10 +10,10 @@ var validateEmail = function (email) {
 const user = new Schema({
     email: {
         type: String, 
-        unique: [true, 'Email Already Exists '],
-        validate: [validateEmail, 'Please fill in a valid email address'],
+        unique: [true, 'Email Đã Tồn Tại '],
+        validate: [validateEmail, 'Email Sai Định Dạng'],
         trim: true,
-        required: [true, 'You have not entered your email']
+        required: [true, 'Bạn Cần Nhập Email']
     },
     password: {
         type: String,

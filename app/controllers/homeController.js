@@ -3,7 +3,7 @@ const User = require("../model/user");
 class homeController {
     async show_home(req, res, next) {
         let list_courses = await Course.find({});
-        if (list_courses) {
+        if (list_courses.length>0) {
             let new_list_course = list_courses.map(function (course) {
                 return course.toObject();
             })

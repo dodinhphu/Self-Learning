@@ -17,14 +17,14 @@
                     </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                         <ul id="nav" class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="{{{_sections.home_active}}}" href="/home">Home</a>
+                            </li>
                             {{#if kt}}
                             {{!-- nếu là học sinh --}}
                             {{#if (check_quyen quyen 2)}}
                             <li class="nav-item">
-                                <a class="active" href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="">My Courses</a>
+                                <a class="{{{_sections.mycourse_active}}}" href="/student/mycourse">My Courses</a>
                             </li>
                             <div class="btn-group">
                                 <div type="button" class="ht_user dropdown-toggle" data-bs-toggle="dropdown"
@@ -57,10 +57,7 @@
                             {{!-- nếu là giáo viên --}}
                             {{else if (check_quyen quyen 1)}}
                             <li class="nav-item">
-                                <a class="active" href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="">My Class</a>
+                                <a class="{{{_sections.myclass_active}}}" href="/teacher/myclass">My Class</a>
                             </li>
                             <div class="btn-group">
                                 <div type="button" class="ht_user dropdown-toggle" data-bs-toggle="dropdown"
@@ -92,9 +89,6 @@
                             </div>
                             {{!-- nếu là admin --}}
                             {{else if (check_quyen quyen 0)}}
-                            <li class="nav-item">
-                                <a class="active" href="/">Home</a>
-                            </li>
                             <li class="nav-item">
                                 <a href="">Web Manage</a>
                             </li>

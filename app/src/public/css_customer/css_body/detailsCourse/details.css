@@ -74,7 +74,27 @@
 }
 
 .tong_t {
+    width: 100%;
     font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tong_btnxs {
+    display: flex;
+}
+
+.tong_btnxs div {
+    margin-right: 8px;
+}
+
+.tong_btnxs svg {
+    color: #f05123;
+    transition: all ease .1s;
+}
+
+.tong_btnxs svg:hover {
+    font-size: 24px;
 }
 
 .bai {
@@ -175,4 +195,39 @@
     position: sticky;
     top: 82px;
     z-index: 2;
+}
+
+.btn_cs button {
+    font-size: 12px;
+}
+
+.add_lesson {
+    transition: all ease .1s;
+}
+
+.add_lesson:hover {
+    cursor: pointer;
+    font-size: 24px !important;
+}
+
+.add_lesson {
+    font-size: 18px;
+    color: #f05123;
+}
+
+.add_lesson svg {
+    margin-right: 8px;
+}
+
+.tong__lesson {
+    display: flex;
+    justify-content: space-between;
+}
+
+.txt_chuab {
+    text-align: center;
+    margin: 40px 0px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f05123;
 }

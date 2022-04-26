@@ -6,13 +6,15 @@ class courseController {
         let course = await Course.findOne({
             course_id: req.params.id
         })
+        let kt_member = course.course_member.includes(req.data.email)
         if (course) {
             return res.render('viewCourse/details_course', {
-                data: course.toObject()
+                data: course.toObject(),
+                kt_member: kt_member
             })
         }
         else {
-            return res.render('viewCourse/details_course')
+            return res.render('/home')
         }
     }
 }

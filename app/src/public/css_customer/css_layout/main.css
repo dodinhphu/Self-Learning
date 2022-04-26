@@ -1853,7 +1853,7 @@ a {
 
 .at_list {
   top: 100% !important;
-  left: 80px !important;
+  left: 50px !important;
   font-size: 18px;
 }
 .icon-ltk{
@@ -1864,4 +1864,8 @@ a {
 }
 .link-l{
   padding: 4px 8px;
+}
+.text_area{
+  height: 300px;
+  resize: none;
 }

@@ -1,0 +1,18 @@
+<form  id="register_form">
+    <div class="form_item">
+        <label for="validationDefault01">Tên Bài Học</label>
+        <input value="{{data.lesson_name}}" id="lesson_name" type="text" class="form-control inpux_dk"
+            Name="lesson_name" placeholder="Tên Bài Học">
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Số Thứ Tự</label>
+        <input value="{{data.lesson_STT}}" id="lesson_STT" type="number" class="form-control inpux_dk"
+            name="lesson_STT" placeholder="Số Thứ Tự">
+    </div>
+    <div class="form_item">
+        <label for="validationDefault01">Link Video</label>
+        <input value="{{data.lesson_video}}" id="lesson_video" type="text" class="form-control inpux_dk"
+            Name="lesson_video" placeholder="Link Video">
+    </div>
+    <button id="{{id_btn}}" type="submit" class="btn btn-success btn-register">{{btn_name}}</button>
+</form>

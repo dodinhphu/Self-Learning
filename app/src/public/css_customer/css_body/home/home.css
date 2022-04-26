@@ -1,0 +1,22 @@
+.btn_mycourse {
+    margin: 12px 4px;
+    display: flex;
+    justify-content: end;
+}
+
+.btn_mycourse a {
+    margin-right: 4px;
+}
+
+.toan_khoa {
+    color: #0a58ca;
+    margin-bottom: 30px;
+}
+
+.title_mc {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 30px 0;
+    color: #441cbe;
+}
