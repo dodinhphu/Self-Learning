@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="/css_customer/css_body/exercise/exercise.css">
     <script src="/codemirror-5.65.3/lib/codemirror.js"></script>
     <link rel="stylesheet" href="/codemirror-5.65.3/lib/codemirror.css">
-    <link rel="stylesheet" href="/codemirror-5.65.3/theme/monokai.css">  
+    <link rel="stylesheet" href="/codemirror-5.65.3/theme/moxer.css">  
+    <link rel="stylesheet" href="/codemirror-5.65.3/theme/icecoder.css">  
     <script src="/codemirror-5.65.3/mode/javascript/javascript.js"></script>
     
     {{!-- link customer css --}}
@@ -34,6 +35,11 @@
             {{>header}}
         </header>
         {{{body}}}
+
+
+
+{{!-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
+
         
         {{!-- Exercise  --}}
         <div class="exercise">
@@ -56,9 +62,7 @@
                     </div>
                     <div class="thread-content__in-output">
                         <p>Output: </p>
-                        <div>
-                            5
-                        </div>
+                        <textarea class="output__result">5</textarea>
                     </div>
                 </div>
             </div>
@@ -81,14 +85,25 @@
                         <p>Result</p>
                         <button class="exercise__run-code">Run code</button>
                     </div>
-                    <div class="exercise__code-bottom-result">
-                        <textarea id="textcodeJS" class="code-area" style="color:#fff;" name="" ></textarea>
+                    <div class="exercise__code-bottom-container">
+                        <textarea id="textcodeJS" class="code-area exercise__code-result" style="color:#fff;" name="" ></textarea>
                         <button class="exercise__run-code">Run code</button>
                     </div>
                 </div>
-
             </div>
+
+            {{!-- Button Next --}}
+            <a class="exercise__btn-next" href="#">
+                NEXT <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+
         </div>
+
+
+{{!-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
+
+
+
 
 
 
@@ -99,27 +114,73 @@
 
 
 
+{{!-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
+
+
+
+
     {{!-- Excercise --}}
     <script >
+
+
         window.onload = () => {
             const [input,output] = document.querySelectorAll(".code-area");
             const [run,clear] = document.querySelectorAll(".exercise__run-code");
 
-            const inputCode = CodeMirror.fromTextArea(input, {lineNumbers: true});
-            const outputCode = CodeMirror.fromTextArea(output, {lineNumbers: false});
+            const inputCode = CodeMirror.fromTextArea(input, {lineNumbers: true, theme: "moxer"});
+            const outputCode = CodeMirror.fromTextArea(output, {lineNumbers: false, theme: "icecoder"});
+            const codeThread = document.querySelector(".output__result").value * 1;
+
+            const btnNext = document.querySelector(".exercise__btn-next");
 
             run.addEventListener("click",()=> {
                 const codeToRun = inputCode.getValue().toString();
                 try {
-                    outputCode.replaceRange('$ '+ eval(`${codeToRun}`) + "\n", CodeMirror.Pos(outputCode.lastLine()));
+                    outputCode.replaceRange(eval(`${codeToRun}`) + "\n", CodeMirror.Pos(outputCode.lastLine()));
                 }
                 catch (e) {
                     outputCode.replaceRange('$ '+ e + "\n", CodeMirror.Pos(outputCode.lastLine()));
-
                 }
+
+                if(checkResult(codeThread,outputCode)) {
+                    btnNext.style.visibility = 'visible';
+                }
+                else {
+                    btnNext.style.visibility = 'hidden';
+                }
+                console.log();
             });
+
+
         }
+
+        function checkResult(codeThread,outputCode) {
+
+            var codeResult = outputCode.getDoc().getValue() * 1;
+
+            console.log(codeThread);
+            console.log(codeResult);
+
+            console.log(typeof codeThread);
+            console.log(typeof codeResult );
+
+            if (codeResult === codeThread) {
+                console.log("true");
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+
     </script>
+
+
+
+
+{{!-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
 
 
 
