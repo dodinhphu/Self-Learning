@@ -1,0 +1,51 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/lesson/lesson.css">
+{{/section}}
+
+{{#section 'title'}}Details Lesson{{/section}}
+{{#section 'javascript'}}
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io()
+</script>
+{{/section}}
+
+
+<div style="padding: 0;" class="container-fluid">
+    <div style="margin: 10px 0;" class="row">
+        <div style="padding:0;border-right: 1px solid #ccc;" class="col-9">
+            <div class="video">
+                <iframe
+                    src="https://www.youtube.com/embed/{{lesson.lesson_video}}?autoplay=1&modestbranding=1&showinfo=0&rel=0&fs=0&disablekb=1&q=thh&ghf"
+                    width="100%" height="650px" frameborder="0"></iframe>
+            </div>
+            <div class="toan_duoi">
+                <h6 class="ten_baihoc">{{lesson.lesson_name}}</h6>
+                <p class="thoi_gian">Cập nhật {{lesson.dateCreater}}</p>
+            </div>
+            <div class="comment" style="min-height: 800px;">
+                {{!-- test --}}
+                <div>
+                    <h1>chat</h1>
+                    <ul class="list-chat"></ul>
+                    <div>
+                        <input type="text">
+                        <button>gửi</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div style="padding:0;background: #f9f9f9;" class="col-3">
+            <h6 class="sticky_top txt_toanbh">Nội Dung Khóa Học</h6>
+            {{#each all_lesson}}
+            <div class="{{#if (acti ../lesson._id this._id) }}acti{{/if}} toan_bai">
+                <a style="color: #161616;" href="/student/{{../course_id}}/lerninglesson/{{this._id}}">
+                    <span>Bài {{this.lesson_STT}}.{{this.lesson_name}}</span>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>

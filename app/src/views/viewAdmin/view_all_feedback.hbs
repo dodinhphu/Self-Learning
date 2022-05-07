@@ -1,0 +1,73 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/admin/all_feedback.css">
+{{/section}}
+
+{{#section 'title'}}All Feedback{{/section}}
+{{#section 'javascript'}}
+<script src="/js/admin/admin.js"></script>
+{{/section}}
+{{#section 'feedback_active'}}
+active
+{{/section}}
+<div style="min-height: 350px;" class="container">
+    <h6 class="title">Phản Hồi Người Dùng</h6>
+    {{#each data}}
+    <div id="{{this._id}}" class="all_feedback">
+        <div class="header_feedback">
+            <h6>{{this.Subject}}</h6>
+            <small>{{this.ngayFeedback}}</small>
+        </div>
+        <div style="margin-bottom: 20px;">
+            {{#if this.status}}
+            <small style="color: #09a301cc;font-size:1rem">Đã xử lý</small>
+            {{else}}
+            <small style="color: red;font-size:1rem">Chưa xử lý</small>
+            {{/if}}
+        </div>
+        <div class="body_feedback">
+            <p class="">
+                {{this.content_feedback}}
+            </p>
+        </div>
+        <div class="footer_feedback">
+            <small>By {{this.fullname}}</small>
+            <div class="handle">
+                <!-- Button trigger modal -->
+                <div class="handle_btn">
+                    <button onclick="xoa_feedback('{{this._id}}')" style="margin-left: 10px;" type="button"
+                        class="btn btn-danger">Xóa</button>
+                    <button type="button" class="ph btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop{{@index}}">
+                        Phản Hồi
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop{{@index}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="text-align:center" class="modal-header">
+                                <h5  class="modal-title" id="staticBackdropLabel">Phản Hồi</h5>
+                            </div>
+                            <div id="body_model" class="modal-body">
+                                <textarea onfocus="focus_te()" placeholder="Nội Dung" id="noidung"
+                                    style="width: 100%;height: 220px;resize: none;padding:4px;"></textarea>
+                                <span id="tb">Không Được Bỏ trống trường này</span>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button id="nutdong" onclick="nutdong()" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Đóng</button>
+                                <button id="guimail" onclick="phanhoi_feedback('{{this._id}}')" type="button"
+                                    class="btn btn-primary">Gửi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+</div>

@@ -59,7 +59,8 @@
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <div>
-                                    <i onclick="delete_lesson('/teacher/{{../data.course_id}}/deletelesson/{{this._id}}')" class="fa-solid fa-delete-left"></i>
+                                    <i onclick="delete_lesson('/teacher/{{../data.course_id}}/deletelesson/{{this._id}}')"
+                                        class="fa-solid fa-delete-left"></i>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +107,28 @@
                         <span>{{data.course_price}}đ</span>
                         {{/if}}
                     </div>
+                </div>
+                <div class="t_member">
+                    <div class="sticky_top">
+                        <div style="padding-top:4px"></div>
+                        <h6 class="tt_ds">
+                            Danh Sách Thành Viên(<span id="count">{{data.course_member.length}}</span>)
+                        </h6>
+                    </div>
+                    <ul class="list_member">
+                        {{#each data.new_arr_member}}
+                        <li id="{{this.email}}" class="item_member">
+                            <div>
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>
+                                    {{this.name}}
+                                </span>
+                            </div>
+                            <i onclick="xoa_member('{{this.email}}')" class="icon_xoa fa-solid fa-circle-minus"></i>
+                        </li>
+
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>

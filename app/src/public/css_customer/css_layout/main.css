@@ -1843,8 +1843,8 @@ a {
 }
 
 .ht_user {
-  margin-top: 32px;
-  font-size: 20px;
+  margin-top: 26px;
+  font-size: 22px;
   margin-left: 80px;
   color: #0edc8d;
   font-family: initial;
@@ -1852,20 +1852,30 @@ a {
 }
 
 .at_list {
-  top: 100% !important;
-  left: 50px !important;
+  top: 58px !important;
+  left: -50px !important;
   font-size: 18px;
 }
-.icon-ltk{
+
+.icon-ltk {
   display: flex;
   color: #0edc8d;
   align-self: center;
   padding-left: 4px;
 }
-.link-l{
+
+.link-l {
   padding: 4px 8px;
 }
-.text_area{
+
+.text_area {
   height: 300px;
   resize: none;
+}
+
+.sticky_top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 82px;
+  z-index: 2;
 }

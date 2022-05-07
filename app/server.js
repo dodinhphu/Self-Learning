@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./config/db/db');
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const route = require('./routes/index_route');
 /* helpers */
 /*  */
 db.connectDB();
@@ -30,20 +31,27 @@ app.engine('hbs', engine({
         check_gia: (gia) => {
             if (Number(gia) == 0) return true;
             else return false
+        },
+        acti: (lessonhientai, lesson) => {
+            return lessonhientai.toString().trim() == lesson.toString().trim()
         }
     }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src/views'));
-const route = require('./routes/index_route'); class homeController {
-    // http://facebookfinder/home
-    show(req, res, next) {
-        return res.render('home');
-    }
-}
-module.exports = new homeController();
-route(app);
+/* socket.io */
+var server = require("http").Server(app)
+/* port */
 const PORT = process.env.APP_PORT || 5000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log('server listen port ', PORT);
 });
+/* socket */
+const io = require("socket.io")(server);
+app.set("io", io)
+
+
+route(app);
+
+
+module.exports = { app: app };

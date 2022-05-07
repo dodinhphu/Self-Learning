@@ -36,6 +36,8 @@
                         <h6 style="margin:0 ;">Nội Dung Khóa Học</h6>
                     </div>
                     {{#if data.course_lesson }}
+                    {{#if (check_quyen quyen 2)}}
+                    {{#if kt_member}}
                     {{#each data.course_lesson}}
                     <div class="t_tungbai">
                         <i class="fa-solid fa-circle-play"></i>
@@ -45,13 +47,45 @@
                                 <span class="ten_bai">{{this.lesson_name}}</span>
                             </div>
                             <div class="tong_btnxs">
-                                <a href="">
+                                <a href="/student/{{../data.course_id}}/lerninglesson/{{this._id}}">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     {{/each}}
+                    {{else}}
+                    {{#each data.course_lesson}}
+                    <div class="t_tungbai">
+                        <i class="fa-solid fa-circle-play"></i>
+                        <div class="tong_t">
+                            <div style="color: #9a9a9a;">
+                                <span class="bai">Bài {{this.lesson_STT}}:</span>
+                                <span class="ten_bai">{{this.lesson_name}}</span>
+                            </div>
+                            <div class="tong_btnxs">
+                                <i style="color: #9a9a9a;" class="fa-solid fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                    {{else}}
+                    {{#each data.course_lesson}}
+                    <div class="t_tungbai">
+                        <i class="fa-solid fa-circle-play"></i>
+                        <div class="tong_t">
+                            <div style="color: #9a9a9a;">
+                                <span class="bai">Bài {{this.lesson_STT}}:</span>
+                                <span class="ten_bai">{{this.lesson_name}}</span>
+                            </div>
+                            <div class="tong_btnxs">
+                                <i style="color: #9a9a9a;" class="fa-solid fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{/if}}
                     {{else}}
                     <div class="txt_chuab">Chưa Có Bài Học</div>
                     {{/if}}
@@ -98,12 +132,17 @@
                     </div>
                     {{#if (check_quyen quyen 2)}}
                     {{#if kt_member}}
+                    {{#if data.course_lesson.0._id}}
                     <div id="chua_btn" class="t_btn_dk">
-                        <button id="btn_hocngay">Học Ngay</button>
+                        <a href="/student/{{data.course_id}}/lerninglesson/{{data.course_lesson.0._id}}">
+                            <button id="btn_hocngay">Học Ngay</button>
+                        </a>
                     </div>
+                    {{/if}}
                     {{else}}
                     <div id="chua_btn" class="t_btn_dk">
-                        <button onclick="join_lesson('/student/{{data.course_id}}/joinlesson')" id="btn_dk_khoahoc">Đăng Ký Khóa Học</button>
+                        <button onclick="join_lesson('/student/{{data.course_id}}/joinlesson')" id="btn_dk_khoahoc">Đăng
+                            Ký Khóa Học</button>
                     </div>
                     {{/if}}
                     {{/if}}

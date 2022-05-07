@@ -3,6 +3,7 @@ const User = require("../model/user");
 const fs = require('fs');
 var Root_path = require('app-root-path');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
+const user = require("../model/user");
 class teacherController {
     show_regiter(req, res, next) {
         return res.render('viewTeacher/registerCourse', {
@@ -58,8 +59,20 @@ class teacherController {
             course_id: req.params.id
         })
         if (course) {
+            course = course.toObject();
+            let new_arr = []
+            for (let i = 0; i < course.course_member.length; i++) {
+                let user = await User.findOne({
+                    email: course.course_member[i]
+                })
+                new_arr.push({
+                    email: course.course_member[i],
+                    name: user.fullname
+                })
+            }
+            course.new_arr_member = new_arr
             return res.render('viewTeacher/classDetails', {
-                data: course.toObject()
+                data: course
             })
         }
         else {
@@ -303,6 +316,41 @@ class teacherController {
                             message: err.message
                         })
                     })
+            }
+        } catch (err) {
+            return res.status(500).json({
+                message: err.message
+            })
+        }
+    }
+
+    /* post delete member */
+    async delete_member(req, res, next) {
+        try {
+            let course = await Course.findOne({
+                course_id: req.params.id
+            })
+            if (course) {
+                let new_arr_member = await course.course_member.filter(function (m) {
+                    return m != req.body.member
+                })
+                course.course_member = new_arr_member;
+                course.save()
+                    .then(function (data) {
+                        return res.status(200).json({
+                            email: req.body.member
+                        })
+                    })
+                    .catch(function (err) {
+                        return res.status(500).json({
+                            message: err.message
+                        })
+                    })
+            }
+            else {
+                return res.status(500).json({
+                    message: "Không Tìm Thấy Khóa Học"
+                })
             }
         } catch (err) {
             return res.status(500).json({

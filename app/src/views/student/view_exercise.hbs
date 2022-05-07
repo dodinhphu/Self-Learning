@@ -1,0 +1,77 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/exercise/exercise.css">
+<link rel="stylesheet" href="/exercise/codemirror-5.65.3/lib/codemirror.css">
+<link rel="stylesheet" href="/exercise/ -5.65.3/theme/moxer.css">
+<link rel="stylesheet" href="/exercise/codemirror-5.65.3/theme/icecoder.css">
+{{/section}}
+
+{{#section 'title'}}Exercise{{/section}}
+<script src="/exercise/codemirror-5.65.3/lib/codemirror.js"></script>
+<script src="/exercise/codemirror-5.65.3/mode/javascript/javascript.js"></script>
+<script src="/js/exercise/exercise.js"></script>
+{{#section 'javascript'}}
+
+{{/section}}
+{{#section 'mycourse_active'}}
+active
+{{/section}}
+{{!-- Exercise --}}
+<div class="exercise">
+
+    {{!-- Đề --}}
+    <div class="exercise__thread">
+        <div class="exercise__thread-header">
+            <h2>Excercise 1</h2>
+        </div>
+        <div class="exercise__thread-content">
+            <h3 class="thread-content__title">
+                Hãy tạo Function plus() có thể cộng 2 số với nhau
+            </h3>
+            <div class="thread-content__in-output">
+                <p>Input: </p>
+                <div>
+                    a = 2;
+                    <br>
+                    b = 3;
+                </div>
+            </div>
+            <div class="thread-content__in-output">
+                <p>Output: </p>
+                <textarea class="output__result">5</textarea>
+            </div>
+        </div>
+    </div>
+
+
+    {{!-- Code Editor--}}
+    <div class="exercise__code">
+        <div class="exercise__code-top">
+            <div class="exercise__code-header">
+                <img src="/upload/js.png" alt="">
+                <h2>index.js</h2>
+            </div>
+
+            <div class="exercise__code-content">
+                <textarea id="textcodeJS" class="code-area code-content__text" style="color:#fff;" name=""></textarea>
+            </div>
+        </div>
+
+        <div class="exercise__code-bottom">
+            <div class="exercise__code-bottom-header">
+                <p>Result</p>
+                <button class="exercise__run-code">Run code</button>
+            </div>
+            <div class="exercise__code-bottom-container">
+                <textarea id="textcodeJS" class="code-area exercise__code-result" style="color:#fff;"
+                    name=""></textarea>
+                
+            </div>
+        </div>
+    </div>
+
+    {{!-- Button Next --}}
+    <a class="exercise__btn-next" href="/student/e2b2b3f3-0494-4659-baf1-17f699490f49/lerninglesson/62656f964a4def4807079831">
+        NEXT <i class="fa-solid fa-arrow-right-long"></i>
+    </a>
+
+</div>

@@ -190,12 +190,7 @@
     margin-bottom: 20px;
 }
 
-.sticky_top {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 82px;
-    z-index: 2;
-}
+
 
 .btn_cs button {
     font-size: 12px;
@@ -230,4 +225,41 @@
     font-size: 22px;
     font-weight: 600;
     color: #f05123;
+}
+
+.tong_t:hover {
+    cursor: not-allowed;
+}
+
+.tt_ds {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 22px 14px;
+    background: #ebeaea;
+    border: 1px solid #b5b5b5;
+    border-radius: 6px;
+}
+.list_member{
+    padding-left: 8px;
+}
+.list_member li{
+    padding: 16px 0;
+    font-size: 18px;
+}
+.item_member div svg{
+    margin-right: 12px;
+    color: #17d854;
+}
+.item_member{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+}
+.icon_xoa{
+    align-self: center;
+    color: red;
+    margin-right: 10px;
+}
+.icon_xoa :hover{
+    cursor: pointer;
 }

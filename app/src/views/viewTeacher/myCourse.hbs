@@ -14,6 +14,11 @@ active
     <div style="background-color: #e2e2e2;" class="container-fluid">
         {{#if data}}
         <div class="row">
+            <div style="text-align: center;">
+                <a href="/teacher/createcourse">
+                    <button id="btn_taokhoahoc">Thêm Khóa Học Mới</button>
+                </a>
+            </div>
             {{#each data}}
             <div class="col-lg-3  toan_khoa">
                 <div class="card shadow-lg">
@@ -71,7 +76,14 @@ active
         </div>
         {{else}}
         {{!--trống --}}
-        <h1>Không có khóa học</h1>
+        <div class="row">
+            <div style="text-align: center;">
+                <a href="/teacher/createcourse">
+                    <button id="btn_taokhoahoc">Thêm Khóa Học Mới</button>
+                </a>
+            </div>
+            <h1>Không có khóa học</h1>
+        </div>
         {{/if}}
     </div>
 </div>

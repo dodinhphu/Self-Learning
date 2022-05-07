@@ -1,0 +1,78 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/admin/all_user.css">
+{{/section}}
+
+{{#section 'title'}}All User{{/section}}
+{{#section 'javascript'}}
+<script src="/js/admin/admin.js"></script>
+{{/section}}
+{{#section 'users_active'}}
+active
+{{/section}}
+
+<div class="container">
+    <h6 class="title">Tất Cả Người Dùng</h6>
+    <div class="type_user teacher">
+        <h6 class="sticky_top">Teacher</h6>
+        <div class="item">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số Điện Thoại</th>
+                        <th scope="col">Địa Chỉ</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each list_teacher}}
+                    <tr id="{{this._id}}">
+                        <th scope="row">{{@index}}</th>
+                        <td>{{this.fullname}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.numberPhone}}</td>
+                        <td>{{this.address}}</td>
+                        <td style="min-width: 60px;">
+                            <i onclick="xoa_user('{{this.email}}','{{this._id}}')"
+                                class="iconxoa fa-solid fa-delete-left"></i>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="type_user student">
+        <h6 class="sticky_top">Student</h6>
+        <div class="item">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số Điện Thoại</th>
+                        <th scope="col">Địa Chỉ</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each list_student}}
+                    <tr id="{{this._id}}">
+                        <th scope="row">{{@index}}</th>
+                        <td>{{this.fullname}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.numberPhone}}</td>
+                        <td>{{this.address}}</td>
+                        <td style="min-width: 60px;">
+                            <i onclick="xoa_user('{{this.email}}','{{this._id}}')" class="iconxoa fa-solid fa-delete-left"></i>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

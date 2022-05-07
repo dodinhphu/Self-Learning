@@ -20,3 +20,45 @@
     margin: 30px 0;
     color: #441cbe;
 }
+
+#btn_taokhoahoc {
+    margin: 14px auto;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 999px !important;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    outline: none;
+    padding: 9px 16px;
+    text-align: center;
+    transition: .3s ease;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    background: #22ec01;
+    color: #f05123;
+    border: 2px solid #17d854;
+}
+
+.huykh {
+    padding: 10px;
+}
+
+.huykh button {
+    width: 100%;
+}
+
+.chuadkkh {
+    min-height: 500px;
+    text-align: center;
+}
+
+.chuadkkh h6 {
+    padding: 120px 0 20px 0;
+}
+
+.dkn {
+    padding: 20px 0;
+}

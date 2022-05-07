@@ -16,5 +16,6 @@ routes.post('/deletecourse', upload.single('myfile'), teacherController.delete_c
 routes.post('/:id/createlesson', upload.single('myfile'), teacherController.create_lesson);
 routes.post('/:id/updatelesson/:stt', teacherController.update_lesson);
 routes.post('/:id/deletelesson/:lesson_id', teacherController.delete_lesson);
+routes.delete('/:id/detailsclass', teacherController.delete_member);
 
 module.exports = routes;

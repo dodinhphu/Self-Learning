@@ -1,0 +1,134 @@
+.title {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0px;
+}
+
+.header_feedback {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_feedback h6 {
+    font-size: 20px;
+}
+
+.header_feedback small {
+    font-style: italic;
+    float: right;
+}
+
+.footer_feedback {
+    margin: 20px 0;
+}
+
+.footer_feedback {
+    display: flex;
+    flex-flow: column;
+    justify-content: end;
+}
+
+.footer_feedback small {
+    font-style: italic;
+    text-align: end;
+}
+
+.all_feedback {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.handle_btn {
+    display: flex;
+    justify-content: end;
+    margin-top: 18px;
+}
+
+.ph {
+    margin-left: 14px;
+}
+
+#tb {
+    color: red;
+    float: right;
+    font-style: italic;
+    display: none;
+}
+
+#noidung {
+    background: #ededed;
+}
+
+
+.loader {
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    transform: rotate(165deg);
+}
+
+.loader:before,
+.loader:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    transform: translate(-50%, -50%);
+}
+
+.loader:before {
+    animation: before 2s infinite;
+}
+
+.loader:after {
+    animation: after 2s infinite;
+}
+
+@keyframes before {
+    0% {
+        width: 0.5em;
+        box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    35% {
+        width: 2.5em;
+        box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    70% {
+        width: 0.5em;
+        box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+
+    100% {
+        box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+}
+
+@keyframes after {
+    0% {
+        height: 0.5em;
+        box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+
+    35% {
+        height: 2.5em;
+        box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+    }
+
+    70% {
+        height: 0.5em;
+        box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+    }
+
+    100% {
+        box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+}

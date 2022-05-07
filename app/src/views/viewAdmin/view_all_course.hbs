@@ -1,0 +1,66 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/admin/all_course.css">
+{{/section}}
+
+{{#section 'title'}}All Course{{/section}}
+{{#section 'javascript'}}
+<script src="/js/admin/admin.js"></script>
+{{/section}}
+{{#section 'courses_active'}}
+active
+{{/section}}
+
+
+<div style="padding: 30px 20px 80px 20px;" class="container-fluid">
+    <div class="title">
+        <h6>
+            Danh Sách Các Khóa Học
+        </h6>
+    </div>
+    <div class="seach">
+        <input id="txt_seach" class="form-control" type="text" placeholder="Tìm Kiếm" aria-label="default input example" required>
+        <button id="btn_seach" type="button" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr style="background-color: #ccc;" class="tr sticky_top">
+                <th scope="col">STT</th>
+                <th scope="col">Tên Khóa Học</th>
+                <th scope="col">Tác Giả</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Học Viên</th>
+                <th scope="col">Bài Giảng</th>
+                <th scope="col">Trạng Thái</th>
+                <th scope="col">Ngày Tạo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{this.course_name}}</td>
+                <td>{{this.tacgia}}</td>
+                <td style="color: blueviolet;">{{this.course_price}} đ</td>
+                <td style="color: blueviolet;">{{this.course_member.length}}</td>
+                <td style="color: blueviolet;">{{this.course_lesson.length}}</td>
+                <td>
+                    {{#if this.course_status}}
+                    <span style="color: rgb(5 165 2);font-weight: 700;"> Hoạt Động</span>
+                    {{else}}
+                    <span style="color: red;font-weight: 700;">Ngưng Hoạt Động</span>
+                    {{/if}}
+                </td>
+                <td>{{this.dateCreater}}</td>
+                <td>
+                    <a href="/course/{{this.course_id}}/details">
+                        <i class="icon_nhin fa-solid fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
