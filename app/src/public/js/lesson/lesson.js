@@ -122,8 +122,9 @@ function join_lesson(link) {
         type: "POST",
     })
         .then(function (data) {
+            console.log(data)
             let btn_hocngay = `
-                <button id="btn_hocngay">Học Ngay</button>
+                <a href="/student/${data.course_id}/lerninglesson/${data.lesson_id}"><button id="btn_hocngay">Học Ngay</button></a>
             `
             $("#btn_dk_khoahoc").remove();
             $("#chua_btn").append(btn_hocngay)
@@ -136,3 +137,59 @@ $('input').focus(function () {
     $('#tb_dk').hide(200);
     $('#btn_create').show(200);
 })
+
+
+
+/* xóa member */
+function xoa_member(email) {
+    let kt = confirm("Bạn có chắc chắn muốn xóa người này ra khỏi lớp học ?")
+    if (kt) {
+        $.ajax({
+            url: window.location,
+            type: "DELETE",
+            data: {
+                member: email
+            }
+        })
+            .then(function (data) {
+                let new_count = Number($("#count").text()) - 1
+                $("#count").text(new_count)
+                let a = document.getElementById(data.email)
+                a.remove();
+            })
+            .catch(function (err) {
+                alert(err.responseJSON.message)
+            })
+    }
+}
+
+/* thoat lớp */
+function thoatlop(course_id) {
+    let kt = confirm("Bạn có chắc chắn muốn Thoát ra khỏi lớp học này ?")
+    if (kt) {
+        $.ajax({
+            url: `/student/${course_id}/outcourse`,
+            type: "DELETE",
+        })
+            .then(function (data) {
+                $(`#${data.course_id}`).remove()
+                let toan_khoa = document.getElementsByClassName("toan_khoa")
+                if (toan_khoa.length == 0) {
+                    $("#co").remove();
+                    $("#tong").append(`
+                   <div class="chuadkkh">
+                   <h6>Rât tiết !! Bạn chưa tham gia khóa học nào</h6>
+                   <div class="dkn">
+                    <a href="/home">
+                    <button type="button" class="btn btn-primary">Đi đến các khóa học</button>
+                    </a>
+                   </div>
+               </div>
+                   `)
+                }
+            })
+            .catch(function (err) {
+                alert(err.responseJSON.message)
+            })
+    }
+}

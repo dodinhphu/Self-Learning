@@ -1,0 +1,34 @@
+.title {
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.title h6 {
+    font-size: 30px;
+}
+
+.tr th {
+    padding: 26px 4px;
+    text-align: center;
+}
+
+tbody tr th,
+tbody tr td {
+    text-align: center;
+    padding: 36px 0 !important;
+}
+.icon_nhin{
+    color: #035cff;
+}
+.icon_nhin:hover{
+    cursor: pointer;
+    font-size: 20px;
+}
+.seach{
+    width: 500px;
+    margin: 10px auto 20px auto;
+    display: flex;
+}
+.seach button{
+    margin-left: 10px;
+}
