@@ -18,17 +18,25 @@
     background-color: #fcdcd3;
     border: 1px solid #ffa389;
 }
-.toan_duoi{
+
+.toan_duoi {
     margin-left: 48px;
 }
-.ten_baihoc{
+
+.ten_baihoc {
     margin: 0;
     margin-top: 20px;
     margin-bottom: 6px;
     font-size: 32px;
     font-weight: 700;
 }
-.toan_bai span:hover{
+
+.toan_bai span:hover {
     cursor: pointer;
     color: #f36d47
+}
+
+.item_user {
+    margin-left: 20px;
+    padding: 10px 0;
 }

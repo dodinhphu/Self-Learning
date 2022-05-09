@@ -16,15 +16,15 @@ class studentController {
         })
     }
     async lerningLesson(req, res, next) {
-        /*  req.app.settings.io.on("connection", function (socket) {
-             console.log("có người kêt nối")
-         }) */
         try {
             let course = await Course.findOne({
                 course_id: req.params.course_id,
             })
             let lesson = await course.course_lesson.id(req.params.lesson_id)
             if (course && lesson) {
+                course.course_lesson.sort(function (a, b) {
+                    return a.lesson_STT - b.lesson_STT
+                });
                 return res.render("viewDetailsLesson/detailsLesson", {
                     all_lesson: course.toObject().course_lesson,
                     lesson: lesson.toObject(),
@@ -52,12 +52,17 @@ class studentController {
             })
             if (kt.modifiedCount == 0) {
                 return res.status(500).json({
-                    message: "Đăng Ký Thành Viên Không Thành Công"
+                    message: "Đăng Ký Thành Viên Không Thành Công",
                 })
             }
             else {
+                let course = await Course.findOne({
+                    course_id: req.params.id
+                })
                 return res.status(200).json({
-                    message: "Đăng Ký Thành Viên Thành Công"
+                    message: "Đăng Ký Thành Viên Thành Công",
+                    course_id: course.course_id,
+                    lesson_id: course.course_lesson[0]._id
                 })
             }
         } catch (err) {

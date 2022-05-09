@@ -122,8 +122,9 @@ function join_lesson(link) {
         type: "POST",
     })
         .then(function (data) {
+            console.log(data)
             let btn_hocngay = `
-                <button id="btn_hocngay">Học Ngay</button>
+                <a href="/student/${data.course_id}/lerninglesson/${data.lesson_id}"><button id="btn_hocngay">Học Ngay</button></a>
             `
             $("#btn_dk_khoahoc").remove();
             $("#chua_btn").append(btn_hocngay)

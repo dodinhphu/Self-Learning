@@ -71,6 +71,9 @@ class teacherController {
                 })
             }
             course.new_arr_member = new_arr
+            course.course_lesson.sort(function (a, b) {
+                return a.lesson_STT - b.lesson_STT
+            });
             return res.render('viewTeacher/classDetails', {
                 data: course
             })
