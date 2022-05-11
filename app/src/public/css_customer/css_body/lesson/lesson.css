@@ -9,9 +9,10 @@
 }
 
 .toan_bai {
-    padding: 20px 0 20px 10px;
+    margin: 10px 0;
     font-weight: 500;
     color: #292929;
+    border-bottom: 1px solid #ffd2d2;
 }
 
 .acti {
@@ -35,8 +36,180 @@
     cursor: pointer;
     color: #f36d47
 }
-
 .item_user {
-    margin-left: 20px;
-    padding: 10px 0;
+    padding: 10px 0 10px 46px;
+    font-size: 16px;
+    color: #c1c1c1;
+    font-weight: 400;
+}
+
+.ten_al {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon_dc {
+    align-self: center;
+    color: #0bb071;
+    padding-right: 24px;
+}
+
+.item_user svg {
+    margin-right: 8px;
+}
+
+.ten_al {
+    padding: 6px 0;
+    border-bottom: 1px solid #5b5b5b;
+}
+
+.dhcb {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    color: #0edc8d;
+    padding: 10px 22px;
+    text-align: center;
+}
+
+.tong_gui {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    padding-right: 20px;
+    width: 100%;
+    padding-bottom: 4px;
+}
+
+.tong_gui textarea {
+    resize: none;
+    overflow: hidden;
+    margin-right: 14px;
+    font-size: 18px;
+    padding: 10px 16px;
+    border-radius: 24px;
+    margin-left: 4px;
+}
+
+.tong_gui button {
+    margin-right: 16px;
+    padding: 6px 32px;
+    border-radius: 30px;
+}
+
+.dong_tn {
+    max-width: 70%;
+}
+
+
+/* messager */
+.messages {
+    /* height: 90vh; */
+    overflow-y: scroll;
+    height: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+}
+
+.messages div {
+    transition: all 0.2s ease;
+}
+
+.messageL {
+    text-align: left;
+}
+
+.messageR {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.bubbleL {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #4d2;
+    color: #fff;
+    font: normal 14pt sans-serif;
+    max-width: 50%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+/* 
+.bubbleL:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 15px;
+    left: 12px;
+    top: -5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: transparent;
+    border-right: 10px solid #4d2;
+} */
+
+.bubbleR {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    background: #29f;
+    color: #fff;
+    font: normal 14pt sans-serif;
+    max-width: 50%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+/* 
+.bubbleR:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 15px;
+    
+    right: 12px;
+    top: -5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: transparent;
+    border-left: 10px solid #29f;
+}
+ */
+.drafter {
+    bottom: 0px;
+    padding: 10px;
+    height: 10%;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#Rsend,
+#Rtext {
+    float: right;
+}
+
+.nguoigui {
+    font-size: .8rem;
+    margin-bottom: 4px;
+    font-family: inherit;
+    line-height: 1.4545;
+    color: #474747;
+    font-weight: 600;
+    margin-left: 8px;
+    margin-bottom: 6px;
+}
+
+.list_bt {
+    display: flex;
+    justify-content: end;
 }

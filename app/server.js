@@ -39,19 +39,25 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src/views'));
-/* socket.io */
-var server = require("http").Server(app)
-/* port */
+
+
 const PORT = process.env.APP_PORT || 5000;
-server.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log('server listen port ', PORT);
 });
-/* socket */
-const io = require("socket.io")(server);
-app.set("io", io)
+
+
+
+/* tess */
+var io = require("socket.io")(server);
+/* io.on("connection", function (socket) {
+    console.log("có người kết nối", socket.id)
+    socket.on("a", function (data) {
+        console.log(data)
+    })
+}) */
+app.set('socketio', io);
+
 
 
 route(app);
-
-
-module.exports = { app: app };

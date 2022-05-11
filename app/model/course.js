@@ -3,6 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 
+let lesson_exercises = new mongoose.Schema({
+    input: {
+        type: String,
+        required: [true, 'Bạn Phải nhập đề bài']
+    },
+    output: {
+        type: String,
+        required: [true, 'Bạn phải nhập Kết Quả Mong Muốn']
+    },
+})
+
 let lesson = new mongoose.Schema({
     lesson_STT: {
         type: String,
@@ -18,6 +29,7 @@ let lesson = new mongoose.Schema({
         type: String,
         required: [true, 'Bạn Cần Thêm Video Cho Bài Học Này']
     },
+    lesson_exercises: [lesson_exercises],
     dateCreater: {
         type: String,
         default: new Date().toDateString()
