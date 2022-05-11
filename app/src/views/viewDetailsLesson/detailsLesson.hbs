@@ -5,9 +5,7 @@
 {{#section 'title'}}Details Lesson{{/section}}
 {{#section 'javascript'}}
 <script src="/socket.io/socket.io.js"></script>
-<script>
-    const socket = io()
-</script>
+<script src="/js/lesson/details_lesson.js"></script>
 {{/section}}
 
 
@@ -23,28 +21,46 @@
                 <h6 class="ten_baihoc">{{lesson.lesson_name}}</h6>
                 <p class="thoi_gian">Cập nhật {{lesson.dateCreater}}</p>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    <h6>Đang Học Cùng Bạn</h6>
-                    <div class="item_user">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Đỗ Đình Phú   </span>
-                        <i class="fa-solid fa-earth-europe"></i>
+            <div style="margin-top:40px" class=" row">
+                <div class="sticky_top"></div>
+                <div style="background: #494949; padding:0" class="col-3">
+                    <h6 class="dhcb">
+                        Online
+                        <i class="icon_dc fa-solid fa-earth-europe"></i>
+                    </h6>
+                    <div id="ds_ol">
                     </div>
                 </div>
-                <div class="col-9">
-                    đấ
+                <div style="position:relative;height: 90vh;background: #e4e4e4;" class="col-9">
+                    <div id="tong_message" class="messages">
+                        
+                    </div>
+                    <form class="tong_gui">
+                        <textarea placeholder="Aa" class="form-control" id="txt_tn" rows="1"></textarea>
+                        <button onclick="gui_tn('{{lesson._id}}')" id="btn_gui" type="button"
+                            class="btn btn-primary">Gửi</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div style="padding:0;background: #f9f9f9;" class="col-3">
             <h6 class="sticky_top txt_toanbh">Nội Dung Khóa Học</h6>
             {{#each all_lesson}}
-            <div class="{{#if (acti ../lesson._id this._id) }}acti{{/if}} toan_bai">
-                <a style="color: #161616;" href="/student/{{../course_id}}/lerninglesson/{{this._id}}">
-                    <span>Bài {{this.lesson_STT}}.{{this.lesson_name}}</span>
-                </a>
+            <div class="toan_bai">
+                <div style="padding:10px" class="{{#if (acti ../lesson._id this._id) }}acti{{/if}}">
+                    <a style="color: #161616;" href="/student/{{../course_id}}/lerninglesson/{{this._id}}">
+                        <span>Bài {{this.lesson_STT}}.{{this.lesson_name}}</span>
+                    </a>
+                </div>
+                <div class="list_bt">
+                    {{#each this.lesson_exercises}}
+                    <a style="color: #434343;" href="">
+                        <span>bài 1</span>
+                    </a>
+                    {{/each}}
+                </div>
             </div>
+
             {{/each}}
         </div>
     </div>

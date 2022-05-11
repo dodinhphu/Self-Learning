@@ -20,6 +20,7 @@ verifyToken = async (req, res, next) => {
                 if (user && user.type == 2) {
                     let data = {
                         email: user.email,
+                        name: user.fullname
                     }
                     req.data = data;
                     next();

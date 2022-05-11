@@ -1,6 +1,7 @@
 const { redirect } = require("express/lib/response");
 const Course = require("../model/course");
 const User = require("../model/user");
+let list_online = [];
 /* socket.io */
 class studentController {
 
@@ -15,12 +16,56 @@ class studentController {
             data: data
         })
     }
+
     async lerningLesson(req, res, next) {
         try {
             let course = await Course.findOne({
                 course_id: req.params.course_id,
             })
             let lesson = await course.course_lesson.id(req.params.lesson_id)
+            /* socket io */
+            let io = req.app.get('socketio');
+
+            io.once("connection", function (socket) {
+                console.log(req.data.name + " đã online")
+
+                socket.p_name = req.data.name;
+                socket.p_email = req.data.email;
+                /*  let name_room = "room_" + lesson._id.toString();
+                 socket.join(name_room) */
+                let aa = {
+                    email: req.data.email,
+                    name: req.data.name
+                }
+                let new_arr = list_online.filter(function (item) {
+                    return item.email === aa.email && item.name === aa.name
+                })
+                if (new_arr.length == 0) {
+                    list_online.push(aa);
+                }
+                let ma = "mang-online" + lesson._id.toString();
+                io.sockets.emit(ma, list_online);
+
+
+                socket.on(lesson._id, function (data) {
+                    let rp = {
+                        data: data,
+                        name: req.data.name
+                    }
+                    socket.emit(`server_codon${lesson._id}`, data)
+                    socket.broadcast.emit(`server_${lesson._id}`, rp)
+                })
+
+                /* out */
+                socket.on("disconnect", function () {
+                    for (var i = 0; i < list_online.length; i++) {
+                        if (list_online[i].email == socket.p_email && list_online[i].name == socket.p_name) {
+                            list_online.splice(i, 1);
+                        }
+                    }
+                    io.sockets.emit(ma, list_online);
+                })
+            })
             if (course && lesson) {
                 course.course_lesson.sort(function (a, b) {
                     return a.lesson_STT - b.lesson_STT
