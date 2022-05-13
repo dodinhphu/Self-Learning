@@ -21,23 +21,16 @@ active
     {{!-- Đề --}}
     <div class="exercise__thread">
         <div class="exercise__thread-header">
-            <h2>Excercise 1</h2>
+            <h2>Bài Tập</h2>
         </div>
         <div class="exercise__thread-content">
             <h3 class="thread-content__title">
-                Hãy tạo Function plus() có thể cộng 2 số với nhau
+               {{data.input}}
             </h3>
+            
             <div class="thread-content__in-output">
-                <p>Input: </p>
-                <div>
-                    a = 2;
-                    <br>
-                    b = 3;
-                </div>
-            </div>
-            <div class="thread-content__in-output">
-                <p>Output: </p>
-                <textarea class="output__result">5</textarea>
+                <p>Kết Quả: </p>
+                <textarea class="output__result">{{data.output}}</textarea>
             </div>
         </div>
     </div>
@@ -70,7 +63,7 @@ active
     </div>
 
     {{!-- Button Next --}}
-    <a class="exercise__btn-next" href="/student/e2b2b3f3-0494-4659-baf1-17f699490f49/lerninglesson/62656f964a4def4807079831">
+    <a class="exercise__btn-next" href="/student/{{course_id}}/lerninglesson/{{lesson_id}}">
         NEXT <i class="fa-solid fa-arrow-right-long"></i>
     </a>
 

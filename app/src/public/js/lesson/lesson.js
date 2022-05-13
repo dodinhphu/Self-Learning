@@ -193,3 +193,20 @@ function thoatlop(course_id) {
             })
     }
 }
+
+/* xóa bt */
+function xoa_bt(course_id, lesson_id, bt_id) {
+    let kt = confirm("Bạn Có Chắc Chắn Muốn Xóa Bài Tập Này")
+    if (kt == true) {
+        $.ajax({
+            url: `/teacher/delete_exercise/${course_id}/${lesson_id}/${bt_id}`,
+            type: "DELETE",
+        })
+            .then(function (data) {
+                $(`#${bt_id}`).remove()
+            })
+            .catch(function (err) {
+                alert(err.responseJSON.message)
+            })
+    }
+}

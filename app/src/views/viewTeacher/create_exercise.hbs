@@ -1,0 +1,30 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="/css_customer/css_body/exercise/exercise.css">
+{{/section}}
+
+{{#section 'title'}}Thêm Bài Tập{{/section}}
+
+{{#section 'javascript'}}
+<script src="/js/exercise/exercise1.js"></script>
+{{/section}}
+
+
+<div id="tong_them" class="container">
+    <h6 class="thembt_title">Thêm Bài Tập</h6>
+    <form id="form_them_bt">
+        <div class="bt_input mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Đề Bài</label>
+            <textarea class="form-control" id="txt_input" rows="3" name="input"></textarea>
+        </div>
+        <div class="bt_output mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Kết Quả</label>
+            <textarea class="form-control" id="txt_output" rows="3" name="output"></textarea>
+        </div>
+        <div id="bt_btn" class="bt_btn">
+            <a href="/home">
+                <button id="btn_dong" type="button" class="btn btn-secondary">Đóng</button>
+            </a>
+            <button id="btn_thembt" type="submit" class="btn btn-primary">Thêm</button>
+        </div>
+    </form>
+</div>

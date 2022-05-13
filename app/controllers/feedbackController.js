@@ -1,5 +1,6 @@
 const User = require("../model/user");
 const FeedBack = require("../model/feedback");
+const { redirect } = require("express/lib/response");
 class feedbackController {
     async show(req, res, next) {
         try {
@@ -15,7 +16,7 @@ class feedbackController {
                 res.render("viewFeedback/show_feedback")
             }
         } catch (err) {
-            res.render("viewFeedback/show_feedback")
+           redirect("/authentication/login")
         }
 
     }

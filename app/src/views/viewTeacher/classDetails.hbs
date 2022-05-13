@@ -48,21 +48,47 @@
                     </div>
                     {{#each data.course_lesson}}
                     <div id="{{this._id}}" class="t_tungbai">
-                        <i class="fa-solid fa-circle-play"></i>
-                        <div class="tong_t">
-                            <div>
-                                <span class="bai">Bài {{this.lesson_STT}}:</span>
-                                <span class="ten_bai">{{this.lesson_name}}</span>
-                            </div>
-                            <div class="tong_btnxs">
-                                <a href="/teacher/{{../data.course_id}}/updatelesson/{{this._id}}">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
+                        <div style="display: flex;">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <div class="tong_t">
                                 <div>
-                                    <i onclick="delete_lesson('/teacher/{{../data.course_id}}/deletelesson/{{this._id}}')"
+                                    <span class="bai">Bài {{this.lesson_STT}}:</span>
+                                    <span class="ten_bai">{{this.lesson_name}}</span>
+                                </div>
+                                <div class="tong_btnxs">
+                                    <a href="/teacher/{{../data.course_id}}/updatelesson/{{this._id}}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <div>
+                                        <i onclick="delete_lesson('/teacher/{{../data.course_id}}/deletelesson/{{this._id}}')"
+                                            class="fa-solid fa-delete-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="t_bt">
+                            <div class="title_bt">
+                                <span>Bài Tập</span>
+                                <a href="/teacher/create_exercise/{{../data.course_id}}/{{this._id}}">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                            {{#each this.lesson_exercises}}
+                            <div id="{{this._id}}" class="bt_item">
+                                <div>
+                                    <i class="fa-solid fa-rectangle-list"></i>
+                                    <span>bài {{#sum @index 1}}{{/sum}}</span>
+                                </div>
+                                <div class="bt_handle">
+                                    <a
+                                        href="/teacher/update_exercise/{{../../data.course_id}}/{{../this._id}}/{{this._id}}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <i onclick="xoa_bt('{{../../data.course_id}}','{{../this._id}}','{{this._id}}')"
                                         class="fa-solid fa-delete-left"></i>
                                 </div>
                             </div>
+                            {{/each}}
                         </div>
                     </div>
                     {{/each}}

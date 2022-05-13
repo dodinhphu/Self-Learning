@@ -54,8 +54,9 @@
                 </div>
                 <div class="list_bt">
                     {{#each this.lesson_exercises}}
-                    <a style="color: #434343;" href="">
-                        <span>bài 1</span>
+                    <a class="bt-item" style="color: #434343;" href="/student/exercise/{{../../course_id}}/{{../this._id}}/{{this._id}}">
+                        <i style="margin-right: 3px;" class="fa-solid fa-rectangle-list"></i>
+                        <span>bài {{#sum @index 1}}{{/sum}}</span>
                     </a>
                     {{/each}}
                 </div>

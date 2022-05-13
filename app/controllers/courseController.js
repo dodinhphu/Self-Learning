@@ -14,7 +14,7 @@ class courseController {
             })
         }
         else {
-            return res.render('/home')
+            return res.render('404/404')
         }
     }
 }

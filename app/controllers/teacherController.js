@@ -4,6 +4,7 @@ const fs = require('fs');
 var Root_path = require('app-root-path');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const user = require("../model/user");
+const { redirect } = require("express/lib/response");
 class teacherController {
     show_regiter(req, res, next) {
         return res.render('viewTeacher/registerCourse', {
@@ -53,7 +54,7 @@ class teacherController {
             return res.render("viewTeacher/myCourse")
         }
     }
-    // get show my class
+    // get show dtails class
     async details_Class(req, res, next) {
         let course = await Course.findOne({
             course_id: req.params.id
@@ -79,7 +80,7 @@ class teacherController {
             })
         }
         else {
-            return res.render('viewTeacher/classDetails')
+            return res.render('404/404')
         }
     }
 
@@ -106,8 +107,108 @@ class teacherController {
             data: lesson.toObject()
         })
     }
-
-
+    /* bt*/
+    async show_create_exercise(req, res, next) {
+        try {
+            return res.render("viewTeacher/create_exercise")
+        } catch (err) {
+            return res.render("404/404")
+        }
+    }
+    async show_update_exercise(req, res, next) {
+        try {
+            let course = await Course.findOne({
+                course_id: req.params.course_id
+            })
+            let lesson = await course.course_lesson.id(req.params.lesson_id)
+            let exercise = await lesson.lesson_exercises.id(req.params.exercise_id)
+            return res.render("viewTeacher/update_exercise", {
+                data: exercise.toObject()
+            })
+        } catch (err) {
+            res.render("404/404")
+        }
+    }
+    async update_exercise(req, res, next) {
+        try {
+            let course = await Course.findOne({
+                course_id: req.params.course_id
+            })
+            course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).input = req.body.input;
+            course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).output = req.body.output;
+            course.save()
+                .then(function (data) {
+                    return res.status(200).json({
+                        data: data
+                    })
+                })
+                .catch(function (err) {
+                    return res.status(500).json({
+                        message: err.message,
+                        err: err
+                    })
+                })
+        } catch (err) {
+            return res.status(500).json({
+                message: err.message
+            })
+        }
+    }
+    async delete_exercise(req, res, next) {
+        try {
+            let course = await Course.findOne({
+                course_id: req.params.course_id
+            })
+            course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).remove()
+            course.save()
+                .then(function (data) {
+                    return res.status(200).json({
+                        data: data
+                    })
+                })
+                .catch(function (err) {
+                    return res.status(500).json({
+                        message: err.message,
+                        err: err
+                    })
+                })
+        } catch (err) {
+            return res.status(500).json({
+                message: err.message
+            })
+        }
+    }
+    /* thêm bài tập post */
+    async create_exercise(req, res, next) {
+        try {
+            Course.findOne({
+                course_id: req.params.course_id
+            })
+                .then(function (data) {
+                    data.course_lesson.id(req.params.lesson_id).lesson_exercises.push(req.body)
+                    data.save()
+                        .then(function (data) {
+                            return res.status(200).json({
+                                data: data
+                            })
+                        })
+                        .catch(function (err) {
+                            return res.status(500).json({
+                                message: err.message
+                            })
+                        })
+                })
+                .catch(function (err) {
+                    return res.status(500).json({
+                        message: err.message
+                    })
+                })
+        } catch (err) {
+            return res.status(500).json({
+                message: err.message
+            })
+        }
+    }
 
     /* post create course */
     async create_course(req, res, next) {
