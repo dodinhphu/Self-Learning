@@ -36,6 +36,7 @@
     cursor: pointer;
     color: #f36d47
 }
+
 .item_user {
     padding: 10px 0 10px 46px;
     font-size: 16px;
@@ -212,4 +213,22 @@
 .list_bt {
     display: flex;
     justify-content: end;
+}
+
+.bt-item {
+    margin: 0 8px;
+}
+
+.list_bt svg {
+    color: #0cab6e;
+}
+
+.bt-item {
+    transition: all 0.1s ease;
+}
+
+.bt-item:hover {
+    cursor: pointer;
+    color: #f36d47;
+    font-size: 18px;
 }

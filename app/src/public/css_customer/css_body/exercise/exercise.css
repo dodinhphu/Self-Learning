@@ -180,3 +180,44 @@
         transform: translate(-1px, 1px) rotate(-1deg);
     }
 }
+
+/* creater bt */
+.thembt_title {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.bt_input .bt_output {
+    resize: none;
+}
+
+.bt_input textarea {
+    height: 310px;
+}
+
+.bt_output textarea {
+    height: 200px;
+}
+
+.bt_btn {
+    width: 100%;
+    text-align: end;
+    float: right;
+}
+
+.bt_btn button {
+    margin: 14px 14px 20px 0px;
+}
+
+.error {
+    color: red;
+    float: right;
+}
+
+.tb_tc_ {
+    margin: 80px 0;
+    font-size: 22px;
+    text-align: center;
+}

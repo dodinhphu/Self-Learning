@@ -7,6 +7,7 @@ window.onload = () => {
     const codeThread = document.querySelector(".output__result").value * 1;
     const btnNext = document.querySelector(".exercise__btn-next");
     run.addEventListener("click", () => {
+        outputCode.setValue("")
         const codeToRun = inputCode.getValue().toString();
         try {
             outputCode.replaceRange(eval(`${codeToRun}`) + "\n", CodeMirror.Pos(outputCode.lastLine()));
@@ -25,12 +26,7 @@ window.onload = () => {
 }
 function checkResult(codeThread, outputCode) {
     var codeResult = outputCode.getDoc().getValue() * 1;
-    console.log(codeThread);
-    console.log(codeResult);
-    console.log(typeof codeThread);
-    console.log(typeof codeResult);
-    if (codeResult === codeThread) {
-        console.log("true");
+    if (codeResult.toString() === codeThread.toString()) {
         return true;
     }
     else {

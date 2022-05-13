@@ -34,6 +34,9 @@ app.engine('hbs', engine({
         },
         acti: (lessonhientai, lesson) => {
             return lessonhientai.toString().trim() == lesson.toString().trim()
+        },
+        sum: (a, b) => {
+            return a+b;
         }
     }
 }));

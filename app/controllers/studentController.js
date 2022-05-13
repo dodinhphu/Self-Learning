@@ -31,8 +31,6 @@ class studentController {
 
                 socket.p_name = req.data.name;
                 socket.p_email = req.data.email;
-                /*  let name_room = "room_" + lesson._id.toString();
-                 socket.join(name_room) */
                 let aa = {
                     email: req.data.email,
                     name: req.data.name
@@ -66,6 +64,7 @@ class studentController {
                     io.sockets.emit(ma, list_online);
                 })
             })
+
             if (course && lesson) {
                 course.course_lesson.sort(function (a, b) {
                     return a.lesson_STT - b.lesson_STT
@@ -77,14 +76,36 @@ class studentController {
                 })
             }
             else {
-                return res.render("default")
+                return res.render("404/404")
             }
         } catch (err) {
-            return res.render("default")
+            return res.render("404/404")
         }
     }
     async show_exercise(req, res, next) {
-        res.render("student/view_exercise")
+        try {
+            let course = await Course.findOne({
+                course_id: req.params.course_id
+            })
+            if (course) {
+                let bt = course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id);
+                if (bt) {
+                    return res.render("student/view_exercise", {
+                        data: bt.toObject(),
+                        course_id: req.params.course_id,
+                        lesson_id: req.params.lesson_id
+                    })
+                }
+                else {
+                    return res.render("404/404")
+                }
+            }
+            else {
+                return res.render("404/404")
+            }
+        } catch (err) {
+            return res.render("404/404")
+        }
     }
 
 
