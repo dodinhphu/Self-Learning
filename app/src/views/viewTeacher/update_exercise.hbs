@@ -10,21 +10,29 @@
 
 
 <div id="tong_them" class="container">
-    <h6 class="thembt_title">Chỉnh Sửa Bài Tập</h6>
-    <form id="sua_exercise">
+    <h6 class="thembt_title">Thêm Bài Tập</h6>
+    <form id="form_them_bt">
         <div class="bt_input mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Đề Bài</label>
-            <textarea class="form-control" id="txt_input" rows="3" name="input">{{data.input}}</textarea>
+            <textarea placeholder="Đề Bài" class="form-control" id="txt_question" rows="3" name="input">{{data.question}}</textarea>
+        </div>
+        <div class="bt_input mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Đầu Vào</label>
+            <textarea placeholder="Đầu Vào" class="form-control" id="txt_input" rows="3" name="dauvao">{{data.input}}</textarea>
         </div>
         <div class="bt_output mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Kết Quả</label>
-            <textarea class="form-control" id="txt_output" rows="3" name="output">{{data.output}}</textarea>
+            <textarea placeholder="Kết Quả" class="form-control" id="txt_output" rows="3" name="output">{{data.output}}</textarea>
         </div>
-        <div class="bt_btn">
+        <div class="bt_output mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Gợi Ý</label>
+            <textarea placeholder="Gợi Ý..." class="form-control" id="txt_goiy" rows="3" name="goiy">{{data.document}}</textarea>
+        </div>
+        <div id="bt_btn" class="bt_btn">
             <a href="/home">
-                <button type="button" class="btn btn-secondary">Đóng</button>
+                <button id="btn_dong" type="button" class="btn btn-secondary">Đóng</button>
             </a>
-            <button id="btn_update_exercise" type="submit" class="btn btn-primary">Cập Nhật</button>
+            <button id="btn_thembt" type="submit" class="btn btn-primary">Thêm</button>
         </div>
     </form>
 </div>

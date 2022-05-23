@@ -4,7 +4,7 @@
 
 {{#section 'title'}}My Class{{/section}}
 {{#section 'javascript'}}
-<script src=""></script>
+<script src="/js/teacher/teacher.js"></script>
 {{/section}}
 {{#section 'myclass_active'}}
 active
@@ -20,7 +20,7 @@ active
                 </a>
             </div>
             {{#each data}}
-            <div class="col-lg-3  toan_khoa">
+            <div id="{{this.course_id}}" class="col-lg-3  toan_khoa">
                 <div class="card shadow-lg">
                     <img src="/upload/{{this.course_img}}" class="card-img-top" alt="reactjs">
                     <div class="card-body card_nd">
@@ -64,10 +64,9 @@ active
                         <a href="/teacher/{{this.course_id}}/updatecourse">
                             <button type="button" class="btn btn-success">Chỉnh Sửa</button>
                         </a>
-                        {{#if this.course_status}}
-                        <button type="button" class="btn btn-success">Đóng</button>
-                        {{else}}
-                        <button type="button" class="btn btn-success">Mở</button>
+                        {{#if (sosanh this.course_member.length 0)}}
+                        <button onclick="xoa_course('{{this.course_id}}')" type="button"
+                            class="btn btn-danger">Xóa</button>
                         {{/if}}
                     </div>
                 </div>

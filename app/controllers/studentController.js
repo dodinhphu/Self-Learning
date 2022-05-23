@@ -41,7 +41,7 @@ class studentController {
                 if (new_arr.length == 0) {
                     list_online.push(aa);
                 }
-                let ma = "mang-online" + lesson._id.toString();
+                let ma = "mang-online" + course.course_id.toString();
                 io.sockets.emit(ma, list_online);
 
 

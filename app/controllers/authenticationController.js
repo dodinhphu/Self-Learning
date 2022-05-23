@@ -77,7 +77,7 @@ class authenticationController {
             const new_user = await User.create(user);
             return res.json({
                 status: true,
-                message: "Sign up successfully"
+                message: "Đăng Ký Tài Khoản Thành Công"
             })
         } catch (error) {
             if (error.code == 11000) {
@@ -97,7 +97,7 @@ class authenticationController {
             if (!user) {
                 return res.json({
                     status: false,
-                    message: "Account does not exist"
+                    message: "Không Tìm Thấy Tài Khoản"
                 })
             }
             else {
@@ -124,14 +124,14 @@ class authenticationController {
                     //đăng nhập thất bại
                     return res.json({
                         status: false,
-                        message: "Incorrect password"
+                        message: "Sai Mật Khẩu"
                     })
                 }
             }
         } catch (err) {
             return res.json({
                 status: false,
-                message: "Login unsuccessful"
+                message: "Đăng Nhập Không Thành Công"
             })
         }
     }
@@ -158,14 +158,14 @@ class authenticationController {
                     .catch(function (err) {
                         console.log('aaaa', err);
                         res.status(500).json({
-                            message: "Email sending failed"
+                            message: "Gửi Mail Không Thàng Công"
                         })
                     })
 
             }
             else {
                 res.status(500).json({
-                    message: "User not found"
+                    message: "Tài Khoản Không Tồn Tại"
                 })
             }
         } catch (err) {
@@ -269,7 +269,7 @@ class authenticationController {
                 }
                 else {
                     return res.status(500).json({
-                        message: 'User not found'
+                        message: 'Không Tìm Thấy Tài Khoản'
                     })
                 }
             }

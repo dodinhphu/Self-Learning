@@ -194,7 +194,7 @@
 }
 
 .bt_input textarea {
-    height: 310px;
+    height: 130px;
 }
 
 .bt_output textarea {
@@ -220,4 +220,8 @@
     margin: 80px 0;
     font-size: 22px;
     text-align: center;
+}
+
+#goiy {
+    display: none;
 }

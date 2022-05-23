@@ -6,7 +6,12 @@ window.onload = () => {
     const outputCode = CodeMirror.fromTextArea(output, { lineNumbers: false, theme: "icecoder" });
     const codeThread = document.querySelector(".output__result").value * 1;
     const btnNext = document.querySelector(".exercise__btn-next");
+    let check = 0;
     run.addEventListener("click", () => {
+        check = check + 1;
+        if (check == 3) {
+            $("#goiy").show(200)
+        }
         outputCode.setValue("")
         const codeToRun = inputCode.getValue().toString();
         try {
@@ -16,6 +21,7 @@ window.onload = () => {
             outputCode.replaceRange('$ ' + e + "\n", CodeMirror.Pos(outputCode.lastLine()));
         }
         if (checkResult(codeThread, outputCode)) {
+            $("#run_code").hide(200)
             btnNext.style.visibility = 'visible';
         }
         else {
