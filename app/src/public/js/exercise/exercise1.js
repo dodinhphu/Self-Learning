@@ -2,11 +2,13 @@ $("#btn_thembt").click(function () {
     $("#form_them_bt").validate({
         rules: {
             input: "required",
-            output: "required"
+            output: "required",
+            goiy: "required"
         },
         messages: {
             input: "Hãy Nhập Đề Bài",
             output: "Hãy Nhập Kết Quả",
+            goiy: "Nhập Vào Gợi Ý Bài Làm"
         },
         submitHandler: function (form) {
             $("#bt_btn").hide(200)
@@ -14,8 +16,10 @@ $("#btn_thembt").click(function () {
                 url: window.location,
                 type: "POST",
                 data: {
+                    question: $("#txt_question").val(),
                     input: $("#txt_input").val(),
-                    output: $("#txt_output").val()
+                    output: $("#txt_output").val(),
+                    document: $("#txt_goiy").val(),
                 }
             })
                 .then(function (data) {

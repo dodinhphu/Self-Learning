@@ -142,10 +142,6 @@ $('#btn_update').click(function () {
     });
 })
 
-
-
-
-
 $('.inpux_dk').focus(function () {
     $('#tb_dk').hide(200);
 })
@@ -231,16 +227,37 @@ function html(data) {
     `
     return html;
 }
-function load_kq(data){
-    
-    let a='';
-    for(let i = 0; i< data.course_result.length;i++){
-        a+= `- ${data.course_result[i]} <br>`
+
+function load_kq(data) {
+
+    let a = '';
+    for (let i = 0; i < data.course_result.length; i++) {
+        a += `- ${data.course_result[i]} <br>`
     }
     return a
 }
+
 function formatCash(str) {
     return str.split('').reverse().reduce((prev, next, index) => {
         return ((index % 3) ? next : (next + ',')) + prev
     })
+}
+
+function xoa_course(course_id) {
+    let kt = confirm("Bạn Có Chắc Chắn Muốn Xóa Khóa Học Này ?")
+    if (kt) {
+        $.ajax({
+            url: "/teacher/deletecourse",
+            type: "POST",
+            data: {
+                course_id: course_id
+            },
+        })
+            .then(function (data) {
+                $(`#${course_id}`).remove();
+            })
+            .catch(function (err) {
+                alert(err.responseJSON.message)
+            })
+    }
 }

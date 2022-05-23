@@ -18,7 +18,7 @@ routes.delete('/delete_exercise/:course_id/:lesson_id/:exercise_id', teacherCont
 /*  */
 routes.post('/createcourse', upload.single('myfile'), teacherController.create_course);
 routes.post('/updatecourse', upload.single('myfile'), teacherController.update_course);
-routes.post('/deletecourse', upload.single('myfile'), teacherController.delete_course);
+routes.post('/deletecourse', teacherController.delete_course);
 routes.post('/:id/createlesson', upload.single('myfile'), teacherController.create_lesson);
 routes.post('/:id/updatelesson/:stt', teacherController.update_lesson);
 routes.post('/:id/deletelesson/:lesson_id', teacherController.delete_lesson);

@@ -1,7 +1,7 @@
 {{#section 'css'}}
 <link rel="stylesheet" href="/css_customer/css_body/exercise/exercise.css">
 <link rel="stylesheet" href="/exercise/codemirror-5.65.3/lib/codemirror.css">
-<link rel="stylesheet" href="/exercise/ -5.65.3/theme/moxer.css">
+<link rel="stylesheet" href="/exercise/codemirror-5.65.3/theme/moxer.css">
 <link rel="stylesheet" href="/exercise/codemirror-5.65.3/theme/icecoder.css">
 {{/section}}
 
@@ -12,25 +12,36 @@
 {{#section 'javascript'}}
 
 {{/section}}
-{{#section 'mycourse_active'}}
-active
+{{#section ''}}
+
 {{/section}}
 {{!-- Exercise --}}
 <div class="exercise">
 
     {{!-- Đề --}}
-    <div class="exercise__thread">
+    <div style="overflow: auto;" class="exercise__thread">
         <div class="exercise__thread-header">
             <h2>Bài Tập</h2>
         </div>
         <div class="exercise__thread-content">
-            <h3 class="thread-content__title">
-               {{data.input}}
-            </h3>
-            
+
+            <div class="thread-content__in-output">
+                <p>Đề: </p>
+                <h3 style="margin: 10px 0;" class="thread-content__title">
+                    {{{data.question}}}
+                </h3>
+            </div>
+            <div class="thread-content__in-output">
+                <p>Đầu Vào: </p>
+                <textarea readonly="true" style="height: 150px;" class="output__result">{{{data.input}}}</textarea>
+            </div>
             <div class="thread-content__in-output">
                 <p>Kết Quả: </p>
-                <textarea class="output__result">{{data.output}}</textarea>
+                <textarea readonly="true" style="height: 150px;" class="output__result">{{data.output}}</textarea>
+            </div>
+            <div id="goiy" class="thread-content__in-output">
+                <h6 style="text-align: center;padding:10px 0;font-size:20px">Gợi ý</h6>
+                <textarea readonly="true" style="height: 400px;" class="output__result">{{data.document}}</textarea>
             </div>
         </div>
     </div>
@@ -45,19 +56,19 @@ active
             </div>
 
             <div class="exercise__code-content">
-                <textarea id="textcodeJS" class="code-area code-content__text" style="color:#fff;" name=""></textarea>
+                <textarea readonly="true" id="textcodeJS" class="code-area code-content__text" style="color:#fff;" name=""></textarea>
             </div>
         </div>
 
         <div class="exercise__code-bottom">
             <div class="exercise__code-bottom-header">
                 <p>Result</p>
-                <button class="exercise__run-code">Run code</button>
+                <button id="run_code" class="exercise__run-code">Run code</button>
             </div>
             <div class="exercise__code-bottom-container">
-                <textarea id="textcodeJS" class="code-area exercise__code-result" style="color:#fff;"
+                <textarea readonly="true" id="textcodeJS" class="code-area exercise__code-result" style="color:#fff;"
                     name=""></textarea>
-                
+
             </div>
         </div>
     </div>

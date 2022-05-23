@@ -185,18 +185,36 @@ class teacherController {
                 course_id: req.params.course_id
             })
                 .then(function (data) {
-                    data.course_lesson.id(req.params.lesson_id).lesson_exercises.push(req.body)
-                    data.save()
-                        .then(function (data) {
-                            return res.status(200).json({
-                                data: data
+                    if (req.body.input.trim().length > 0) {
+                        data.course_lesson.id(req.params.lesson_id).lesson_exercises.push(req.body)
+                        data.save()
+                            .then(function (data) {
+                                return res.status(200).json({
+                                    data: data
+                                })
                             })
-                        })
-                        .catch(function (err) {
-                            return res.status(500).json({
-                                message: err.message
+                            .catch(function (err) {
+                                return res.status(500).json({
+                                    message: err.message
+                                })
                             })
-                        })
+                    }
+                    else {
+                        delete req.body.input;
+                        data.course_lesson.id(req.params.lesson_id).lesson_exercises.push(req.body)
+                        data.save()
+                            .then(function (data) {
+                                return res.status(200).json({
+                                    data: data
+                                })
+                            })
+                            .catch(function (err) {
+                                return res.status(500).json({
+                                    message: err.message
+                                })
+                            })
+                    }
+
                 })
                 .catch(function (err) {
                     return res.status(500).json({
@@ -309,21 +327,40 @@ class teacherController {
     /* post delete Course */
     async delete_course(req, res, next) {
         try {
-            // xóa ảnh cũ
-            fs.unlinkSync(`/upload/${req.body.course_img}`);
-            // xóa khóa học trong db
-            let course = await Course.deleteOne({ course_id: req.body.course_id });
-            if (course) {
-                return res.status(200).json({
-                    message: 'Xóa Khóa Học Thành Công',
-                    data: course
+            Course.findOne({
+                course_id: req.body.course_id
+            })
+                .then(async function (course) {
+                    if (course.course_member.length <= 0) {
+                        return res.status(500).json({
+                            message: "Khóa Học Này Hiện Đang Có Người Học. Không Thể Xóa !"
+                        })
+                    }
+                    else {
+                        // xóa ảnh cũ
+                        fs.unlinkSync(`${Root_path}\\app\\src\\public\\upload\\${course.course_img}`);
+                        // xóa khóa học trong db
+                        let kq = await Course.deleteOne({ course_id: req.body.course_id });
+                        console.log(kq)
+                        if (kq.deletedCount > 0) {
+                            return res.status(200).json({
+                                message: 'Xóa Khóa Học Thành Công',
+                                data: course
+                            })
+                        }
+                        else {
+                            return res.status(500).json({
+                                message: 'Xóa Khóa Học Thất Bại'
+                            })
+                        }
+                    }
                 })
-            }
-            else {
-                return res.status(500).json({
-                    message: 'Xóa Khóa Học Thất Bại'
+                .catch(function (err) {
+                    return res.status(500).json({
+                        message: err.message
+                    })
                 })
-            }
+
         } catch (err) {
             return res.status(500).json({
                 message: err.message
@@ -354,7 +391,7 @@ class teacherController {
                     }
                     else {
                         return res.status(500).json({
-                            message: "Tạo Bài Học Không Thành Công",
+                            message: "Trùng Số Thứ Tự. Tạo Bài Học Không Thành Công",
                             course_lesson: course
                         })
                     }
