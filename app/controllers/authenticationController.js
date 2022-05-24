@@ -81,7 +81,7 @@ class authenticationController {
             })
         } catch (error) {
             if (error.code == 11000) {
-                error.message = `Email: ${error.keyValue.email} already exists`
+                error.message = `Email: ${error.keyValue.email} Đã Tồn Tại`
             }
             return res.json({
                 status: false,
@@ -182,7 +182,7 @@ class authenticationController {
             jwt.verify(token, process.env.APP_SECRET, (err, token) => {
                 if (err) {
                     return res.status(500).json({
-                        message: 'Token has expired'
+                        message: 'Link Đã Hết Hạng !'
                     })
                 }
                 else {
@@ -201,7 +201,7 @@ class authenticationController {
                         })
                         .catch(function (err) {
                             return res.status(500).json({
-                                message: 'Account Not Found'
+                                message: 'Không Tìm Thấy Tài Khoản'
                             });
                         })
                 }

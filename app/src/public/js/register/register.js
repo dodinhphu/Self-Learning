@@ -24,24 +24,24 @@ $('#btn_register').click(function () {
         },
         messages: {
             email: {
-                required: "Please enter email",
-                email: "Email is wrong format",
+                required: "Bạn Phải Nhập email",
+                email: "Email Sai Định Dạng",
             },
-            fullname: "Please enter full name",
-            address: "Please enter address",
+            fullname: "Bạn Phải Nhập Họ Và Tên",
+            address: "Bạn Phải Nhập Địa Chỉ",
             numberPhone: {
-                required: "Please enter number phone",
-                rangelength: "Number phone is wrong format",
-                number: "Number phone is wrong format",
+                required: "Bạn Phải Nhập Số Điện Thoại",
+                rangelength: "Số Điện Thoại Sai Định Dạng",
+                number: "Số Điện Thoại Sai Định Dạng",
             },
-            type: "Please enter type account",
+            type: "Bạn Phải Chọn Loại",
             password: {
-                minlength: "Password Must Be Over 6 Characters",
-                required: "Please enter password",
+                minlength: "Mật Khẩu Phải Lớn Hơn Hoặc Bằng 67 Ký Tự",
+                required: "Bạn Phải Nhập Mật Khẩu",
             },
             confirmpassword: {
-                required: "Please enter confirm password",
-                equalTo: "password incorrect"
+                required: "Bạn Phải Nhập Xác Nhận Mật Khẩu",
+                equalTo: "Mật Khẩu Không Khớp"
             },
         },
         submitHandler: function (form) {
@@ -96,7 +96,7 @@ var e1 = ` <div>
                 src="https://i.pinimg.com/originals/6d/cd/94/6dcd94c7c4bf4800648ef7cbe0113c33.gif"
                 alt="">
             <a style="display: block;margin:auto" href="/authentication/login">
-                <button style="display: block;margin:auto" type="button" class="login_dk btn btn-primary">Login now</button>
+                <button style="display: block;margin:auto" type="button" class="login_dk btn btn-primary">Đăng Nhập Ngay</button>
             </a>
            </div>`;
 

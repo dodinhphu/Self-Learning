@@ -10,12 +10,12 @@ $('#btn_update').click(function () {
             }
         },
         messages: {
-            fullname: "Please enter full name",
-            address: "Please enter address",
+            fullname: "Bạn Phải Nhập Họ Và Tên",
+            address: "Bạn Phải Nhập Địa Chỉ",
             numberPhone: {
-                required: "Please enter number phone",
-                rangelength: "Number phone is wrong format",
-                number: "Number phone is wrong format",
+                required: "Bạn Phải Nhập Số Điện Thoại",
+                rangelength: "Số Điện Thoại Sai Định Dạng",
+                number: "Số Điện Thoại Sai Định Dạng",
             },
         },
         submitHandler: function (form) {
@@ -34,7 +34,7 @@ $('#btn_update').click(function () {
                 .then(function (data) {
                     $('#tb_dk').removeClass();
                     $('#tb_dk').addClass("alert alert-success");
-                    $('#tb_dk').text("Updated Successfully");
+                    $('#tb_dk').text("Cập Nhật Thành Công");
                     $('#tb_dk').show(200);
                     $('form').hide(100);
                     $('#toan_rgt').append(e1);

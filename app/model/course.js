@@ -81,7 +81,10 @@ const course = new Schema({
         type: Array,
         default: []
     },
-    course_lesson: [lesson],
+    course_lesson: {
+        type: [lesson],
+        default: []
+    },
     course_status: {
         type: Boolean,
         default: true

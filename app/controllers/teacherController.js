@@ -8,7 +8,7 @@ const { redirect } = require("express/lib/response");
 class teacherController {
     show_regiter(req, res, next) {
         return res.render('viewTeacher/registerCourse', {
-            btn_name: "Creater",
+            btn_name: "Tạo",
             id_btn: 'btn_creater'
         });
     }
@@ -20,7 +20,7 @@ class teacherController {
         if (course) {
             return res.render('viewTeacher/updateCourse', {
                 data: course.toObject(),
-                btn_name: "Changer",
+                btn_name: "Thay Đỗi",
                 id_btn: 'btn_update'
             });
         }
@@ -89,7 +89,7 @@ class teacherController {
         return res.render("viewTeacher/createLesson", {
             btn_name: "Tạo",
             id_btn: "btn_create",
-            title: "Creater Lesson",
+            title: "Tạo Bài Học",
             id: req.params.id
         })
     }
@@ -102,7 +102,7 @@ class teacherController {
         return res.render("viewTeacher/updateLesson", {
             btn_name: "Sửa",
             id_btn: "btn_update",
-            title: "Update Lesson",
+            title: "Cập Nhật Bài Học",
             id: req.params.id,
             data: lesson.toObject()
         })
@@ -134,8 +134,10 @@ class teacherController {
             let course = await Course.findOne({
                 course_id: req.params.course_id
             })
+            course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).question = req.body.question;
             course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).input = req.body.input;
             course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).output = req.body.output;
+            course.course_lesson.id(req.params.lesson_id).lesson_exercises.id(req.params.exercise_id).document = req.body.document;
             course.save()
                 .then(function (data) {
                     return res.status(200).json({
@@ -234,7 +236,7 @@ class teacherController {
             const file = req.file;
             if (!file) {
                 return res.status(500).json({
-                    message: 'Please upload a file'
+                    message: 'Bạn Chưa Tải Ảnh Lên'
                 })
             }
             else {
@@ -250,21 +252,22 @@ class teacherController {
                     course_status: true,
                     course_author: req.data.email
                 }
-                let course = await Course.create(new_course);
-                if (course) {
-                    return res.status(200).json({
-                        data: course,
-                        message: 'Tạo Mới KHóa Học Thành Công'
-                    });
-                }
-                else {
-                    return res.status(500).json({
-                        message: 'Tạo Mới Khóa Học Thất Bại'
+                Course.create(new_course)
+                    .then(function (course) {
+                        return res.status(200).json({
+                            data: course,
+                            message: 'Tạo Mới KHóa Học Thành Công'
+                        });
                     })
-                }
+                    .catch(function (err) {
+                        return res.status(500).json({
+                            message: 'Tạo Mới Khóa Học Thất Bại'
+                        })
+                    })
             }
 
         } catch (err) {
+            console.log(err)
             return res.status(500).json({
                 message: err.message
             })
@@ -278,7 +281,7 @@ class teacherController {
             const file = req.file;
             if (!file) {
                 return res.status(500).json({
-                    message: 'Update Failed Course'
+                    message: 'Cập Nhật Khóa Học Không Thành Công !'
                 })
             }
             else {
@@ -331,7 +334,7 @@ class teacherController {
                 course_id: req.body.course_id
             })
                 .then(async function (course) {
-                    if (course.course_member.length <= 0) {
+                    if (course.course_member.length > 0) {
                         return res.status(500).json({
                             message: "Khóa Học Này Hiện Đang Có Người Học. Không Thể Xóa !"
                         })
