@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css_customer/css_body/authentication/login.css">
 {{/section}}
 
-{{#section 'title'}}Login{{/section}}
+{{#section 'title'}}Đăng Nhập{{/section}}
 
 {{#section 'javascript'}}
 <script src="/js/login/login.js"></script>
@@ -12,12 +12,9 @@
     <div class="row no-gutter">
         <!-- The image half -->
         <div class="col-md-6 d-none d-md-flex bg-image"></div>
-
-
         <!-- The content half -->
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">
-
                 <!-- Demo content-->
                 <div class="container">
                     <div class="row">
@@ -41,22 +38,22 @@
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
                                         <input id="customCheck1" type="checkbox" class="custom-control-input">
-                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                        <label for="customCheck1" class="custom-control-label">Nhớ Mật Khẩu</label>
                                     </div>
                                     <div style="display:flex;justify-content:end;" class="form-group btn_lg">
                                         <button onclick="login()" type="submit"
                                             class="btn_lglg btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
-                                            Signin
+                                            Đăng Nhập
                                         </button>
                                     </div>
                                 </div>
                                 <div class="kd">
                                     <div class="tong_lk">
                                         <div class="text-center d-flex justify-content-between">
-                                            <p>Forgot Password
+                                            <p>Quên Mật Khẩu
                                                 <span onclick="hien_qmk()" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal"
-                                                    class="sp_quenmk badge bg-secondary">Click Here</span>
+                                                    class="sp_quenmk badge bg-secondary">Bấm Vào Đây</span>
                                             <div class="modal fade" id="exampleModal" data-bs-backdrop="static"
                                                 data-bs-keyboard="false" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,7 +62,7 @@
 
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">
-                                                                Forgot Password
+                                                                Quên Mật Khẩu
                                                             </h5>
                                                             <button onclick="an_qmk()" type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
@@ -92,9 +89,9 @@
                                                         <div class="btn_quenmk modal-footer">
                                                             <button onclick="an_qmk()" type="button"
                                                                 class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                                data-bs-dismiss="modal">Đóng</button>
                                                             <button id="btn_qmk_ctn" onclick="quen_mk()" type="button"
-                                                                class="btn_qmk btn btn-primary">Continue</button>
+                                                                class="btn_qmk btn btn-primary">Tiếp Tục</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,9 +99,9 @@
                                             </p>
                                         </div>
                                         <div class="text-center d-flex justify-content-between">
-                                            <p>New User <a href="/authentication/register"
+                                            <p>Tạo Tài Khoản<a href="/authentication/register"
                                                     class="font-italic text-muted">
-                                                    <span class="badge bg-secondary">Register Here</span></a></p>
+                                                    <span class="badge bg-secondary">Đăng Ký Tại Đây</span></a></p>
                                         </div>
                                     </div>
                                 </div>

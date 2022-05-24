@@ -49,13 +49,6 @@ active
                                 {{/if}}
                             </p>
                         </div>
-                        <div class="danh_giasao">
-                            <i class="sao fa-solid fa-star"></i>
-                            <i class="sao fa-solid fa-star"></i>
-                            <i class="sao fa-solid fa-star"></i>
-                            <i class="sao fa-solid fa-star"></i>
-                            <i class="sao fa-regular fa-star"></i>
-                        </div>
                     </div>
                     <div class="btn_mycourse">
                         <a href="/teacher/{{this.course_id}}/detailsclass">
@@ -65,8 +58,9 @@ active
                             <button type="button" class="btn btn-success">Chỉnh Sửa</button>
                         </a>
                         {{#if (sosanh this.course_member.length 0)}}
-                        <button onclick="xoa_course('{{this.course_id}}')" type="button"
-                            class="btn btn-danger">Xóa</button>
+                        <button onclick="xoa_course('{{this.course_id}}')" type="button" class="btn btn-danger">
+                            Xóa
+                        </button>
                         {{/if}}
                     </div>
                 </div>
@@ -81,7 +75,7 @@ active
                     <button id="btn_taokhoahoc">Thêm Khóa Học Mới</button>
                 </a>
             </div>
-            <h1>Không có khóa học</h1>
+            <h1 style="padding: 80px 0;text-align: center;">Không có khóa học</h1>
         </div>
         {{/if}}
     </div>

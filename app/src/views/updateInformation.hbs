@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css_customer/css_body/authentication/register.css">
 {{/section}}
 
-{{#section 'title'}}Change Password{{/section}}
+{{#section 'title'}}Cập Nhật Tài Khoản{{/section}}
 
 {{#section 'javascript'}}
 <script src="/js/updateInformation/updateinformation.js"></script>
@@ -17,29 +17,28 @@
                 <!-- Demo content-->
                 <div class="container">
                     <div id="toan_rgt" class="row">
-
-                        <h4 style=" text-align:center" class="display-6">Update information</h4>
+                        <h4 style=" text-align:center" class="display-6">Cập Nhật Thông Tin</h4>
                         <br>
                         <div id="tb_dk" style="margin-top: 8px;" class="" role="alert">
                         </div>
 
                         <form id="register_form">
                             <div class="form_item">
-                                <label for="validationDefault01">Full Name</label>
+                                <label for="validationDefault01">Họ Và Tên</label>
                                 <input value="{{data.fullname}}" id="txt_fullname" type="text" class="form-control inpux_dk" name="fullname"
-                                    placeholder="Full Name">
+                                    placeholder="Họ Và Tên">
                             </div>
                             <div class="form_item">
-                                <label for="validationDefault01">Address</label>
+                                <label for="validationDefault01">Địa Chỉ</label>
                                 <input value="{{data.address}}" id="txt_address" type="text" class="form-control inpux_dk" name="address"
-                                    placeholder="Address">
+                                    placeholder="Địa Chỉ">
                             </div>
                             <div class="form_item">
-                                <label for="validationDefault01">Number Phone</label>
+                                <label for="validationDefault01">Số Điện Thoại</label>
                                 <input value="{{data.numberPhone}}" id="txt_numberphone" type="text" class="form-control inpux_dk" name="numberPhone"
                                     placeholder="Number Phone">
                             </div>
-                            <button id="btn_update" type="submit" class="btn btn-success btn-register">Update</button>
+                            <button id="btn_update" type="submit" class="btn btn-success btn-register">Cập Nhật</button>
                         </form>
 
                     </div>

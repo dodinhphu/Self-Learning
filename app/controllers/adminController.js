@@ -183,7 +183,7 @@ class adminController {
                         })
                         .catch(function (err) {
                             res.status(500).json({
-                                message: "Email sending failed"
+                                message: "Gửi Mail Không Thành Công"
                             })
                         })
                 })

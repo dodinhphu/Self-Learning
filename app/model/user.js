@@ -18,8 +18,8 @@ const user = new Schema({
     password: {
         type: String,
         trim: true,
-        minLength: [6, 'Password Must Be Over 6 Characters'],
-        required: [true, 'You have not entered your password']
+        minLength: [6, 'Mật Khẩu Phải Trên 6 Ký Tự'],
+        required: [true, 'Bạn Phải Nhập Mật Khẩu']
     },
     numberPhone: {
         type: String,
@@ -28,28 +28,28 @@ const user = new Schema({
             validator: function (v) {
                 return /((09|03|07|08|05)+([0-9]{8})\b)/g.test(v)
             },
-            message: props => `${props.value} is not a valid phone number`
+            message: props => `${props.value} Sai Định Dạng`
         },
-        minLength: [10, 'Number phone Must Be Over 10 Characters'],
-        maxlength: [11, 'Phone number must be less than 11 characters'],
-        required: [true, 'You have not entered your Number Phone']
+        minLength: [10, 'Số Điện Thoại Sai Định Dạng'],
+        maxlength: [10, 'Số Điện Thoại Sai Định Dạng'],
+        required: [true, 'Bạn Phải Nhập Số Điện Thoại !']
     },
     fullname: {
         type: String,
         trim: true,
-        required: [true, 'You have not entered your full name']
+        required: [true, 'Bạn Phải Nhập Họ Và Tên']
     },
     address: {
         type: String,
         trim: true,
-        required: [true, 'You have not entered your address']
+        required: [true, 'Bạn Phải Nhập Địa Chỉ']
     },
     type: {
         type: Number,
-        min: [0, 'Exceed the value'],
-        max: [2, 'Exceed the value'],
+        min: [0, 'Loại Tài Khoản Không Hợp Lệ'],
+        max: [2, 'Loại Tài Khoản Không Hợp Lệ'],
         trim: true,
-        required: [true, 'You have not entered your  account type']
+        required: [true, 'Bạn Phải Chọn Loại Tài Khoản']
     },
     notifications: {
         type: Array,

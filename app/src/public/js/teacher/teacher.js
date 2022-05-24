@@ -211,9 +211,9 @@ function html(data) {
                                                     <span>:${load_kq(data)}</span>
                                                 </div>
                                                 <div style="text-align: end;">
-                                                   <a href="/course/${data.course_id}/details">
+                                                   <a href="/teacher/${data.course_id}/detailsclass">
                                                     <button type="button" class="btn btn-success">
-                                                        Go to the course
+                                                        Đi Tới Khóa Học
                                                     </button>
                                                    </a>
                                                 </div>

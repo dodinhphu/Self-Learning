@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css_customer/css_body/home/home.css">
 {{/section}}
 
-{{#section 'title'}}Home{{/section}}
+{{#section 'title'}}Trang Chủ{{/section}}
 {{#section 'javascript'}}
 <script src=""></script>
 {{/section}}
@@ -14,10 +14,10 @@
     <div style="background-color: #e2e2e2;" class="container-fluid">
         {{#if data}}
         <div class="row">
-            <div class="all_dm">
+            {{!-- <div class="all_dm">
                 <div class="danhmuc_"> Front end</div>
                 <a class="linkdm" href="">Xem chi tiết ></a>
-            </div>
+            </div> --}}
             {{#each data}}
             <div class="col-lg-3  toan_khoa">
                 <a class="link_khoa_hoc" href="/course/{{this.course_id}}/details">
@@ -49,13 +49,13 @@
                                     {{/if}}
                                 </p>
                             </div>
-                            <div class="danh_giasao">
+                            {{!-- <div class="danh_giasao">
                                 <i class="sao fa-solid fa-star"></i>
                                 <i class="sao fa-solid fa-star"></i>
                                 <i class="sao fa-solid fa-star"></i>
                                 <i class="sao fa-solid fa-star"></i>
                                 <i class="sao fa-regular fa-star"></i>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </a>

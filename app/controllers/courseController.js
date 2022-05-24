@@ -8,6 +8,9 @@ class courseController {
         })
         let kt_member = course.course_member.includes(req.data.email)
         if (course) {
+            course.course_lesson.sort(function (a, b) {
+                return a.lesson_STT - b.lesson_STT
+            }); 
             return res.render('viewCourse/details_course', {
                 data: course.toObject(),
                 kt_member: kt_member

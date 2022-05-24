@@ -12,12 +12,12 @@ $('#changepass').click(function () {
         },
         messages: {
             password: {
-                minlength: "Password Must Be Over 6 Characters",
-                required: "Please enter password",
+                minlength: "Mật Khẩu Phải Lớn Hơn Hoặc Bằng 6 Ký Tự",
+                required: "Bạn Phải Nhập Mật Khẩu",
             },
             confirmpassword: {
-                required: "Please enter confirm password",
-                equalTo: "password incorrect"
+                required: "Bạn Phải Nhập Xác Nhận Mật Khẩu",
+                equalTo: "Mật Khẩu Không Khớp"
             },
         },
         submitHandler: function (form) {
@@ -30,7 +30,7 @@ $('#changepass').click(function () {
             })
                 .then(function (data) {
                     $('#toankhung').hide(200);
-                    $('#tong_tren').append('<div class= "alert alert-success" role = "alert">Change Password successfully</div>')
+                    $('#tong_tren').append('<div class= "alert alert-success" role = "alert">Cập Nhật Mật Khẩu Thành Công</div>')
                 })
                 .catch(function (err) {
                     $('#tb_tong_rsmk').text(JSON.parse(err.responseText).message);
